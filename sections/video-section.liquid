@@ -1,0 +1,63 @@
+<style>
+  @media screen and (max-width: 426px){
+  .video-container {
+        text-align: center;
+    width:300px !important;
+}
+  .iframe{
+  max-width:100% !important;
+    border-radius: 5% 5% 5% 5%;
+  }
+  }
+  @media screen and (max-width: 1441px) {
+  .video-container {
+        text-align: center;
+}
+  .iframe{
+  max-width:100% ;
+    border-radius: 5% 5% 5% 5%;
+  }
+  }
+  .video-container{ 
+    margin:0px auto;
+    margin-bottom:40px;
+    width:560px ;
+  }
+  .video-wrapper iframe {
+ max-width: 100%;
+}
+  
+p.iframe-video > iframe {
+    max-width: 100% !important;
+    border-radius: 5% 5% 5% 5% !important;
+  box-shadow: 0 8px 8px 0 rgb(0 0 0 / 20%), 0 8px 10px 0 rgb(0 0 0 / 19%);
+}
+</style>
+  
+    <div class="video-container">
+      <p class="iframe-video"> {{ section.settings.title }} </p>
+      </div>
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+	{
+        "id": "title",
+        "type": "text",
+        "label": "add Iframe"
+      }
+		],
+"presets" : [
+{
+  "name" : "video-slider",
+  "category" : "Slider"
+  }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

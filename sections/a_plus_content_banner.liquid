@@ -1,0 +1,149 @@
+
+{%- if section.settings.image1 or section.settings.image2 or section.settings.image3 or product.metafields.my_fields.a_content_text_1_header or section.settings.image4 or product.metafields.my_fields.a_content_text_2_header -%}
+<div id="Banner-{{ section.id }}" class="aPlusContent--outer__container">
+  <div  class="aPlusContent--container">
+  {%- if section.settings.image1 != blank -%}
+    <div class="aPlusContent">
+      <img srcset="
+        {{ section.settings.image1 | img_url: '1500x' }}"
+        alt="{{ section.settings.image1.alt | escape }}"
+      >
+    </div>
+  {%- endif -%}
+  {%- if section.settings.image2 != blank -%}
+    <div class="aPlusContent">
+      <img srcset="
+        {{ section.settings.image2 | img_url: '1500x' }}"
+        alt="{{ section.settings.image2.alt | escape }}"
+      >
+    </div>
+  {%- endif -%}
+  {%- if section.settings.image3 != blank -%}
+    <div class="aPlusContent">
+      <img srcset="
+        {{ section.settings.image3 | img_url: '1500x' }}"
+        alt="{{ section.settings.image3.alt | escape }}"
+      >
+    </div>
+  {%- endif -%}
+  {%- if product.metafields.my_fields.a_content_text_1_header != blank -%}
+    <div class="aPlusContent">
+      <h5>{{ product.metafields.my_fields.a_content_text_1_header }}</h5>
+      <p>{{ product.metafields.my_fields.a_content_text_1_body_text }}</p>      
+    </div>
+  {%- endif -%}  
+  {%- if section.settings.image4 != blank -%}
+    <div class="aPlusContent">
+      <img srcset="
+        {{ section.settings.image4 | img_url: '1500x' }}"
+        alt="{{ section.settings.image4.alt | escape }}"
+      >
+    </div>
+  {%- endif -%}  
+  {%- if product.metafields.my_fields.a_content_text_2_header != blank -%}
+    <div class="aPlusContent">
+      <h5>{{ product.metafields.my_fields.a_content_text_2_header }}</h5>
+      <p>{{ product.metafields.my_fields.a_content_text_2_body_text }}</p>
+    </div>
+  {%- endif -%}    
+  </div>
+</div>
+  {%- endif -%}    
+
+
+<style>
+  .aPlusContent--outer__container {
+    
+  }
+  .aPlusContent--container {
+  max-width: 1400px;
+  margin:auto;
+  background-color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .aPlusContent {
+    margin: auto;
+    max-width: 1300px;
+	padding: 10px;
+  }
+  .aPlusContent img {
+  max-width: 100%;
+  text-align: center;
+/*   padding: 10px !important; */
+}
+  .aPlusContent h5 {
+    font-size: 18px;
+	max-width: 100%;
+    padding: 0px 20px 0px 20px;
+  }
+
+  .aPlusContent p {
+    font-size: 14px;
+    max-width: 100%;
+    padding: 0px 20px 0px 20px;
+  }
+@media screen and (max-width: 450px)
+.aPlusContent--container {
+    width: 100%!important;
+}  
+
+@media screen and (min-width: 750px) {
+  .aPlusContent--container{
+    width: 80%;
+  }
+}
+  
+@media screen and (min-width: 451px) and (max-width: 1199px) {
+.aPlusContent--container {
+    width: 90%;
+}  
+
+</style>
+
+
+{% schema %}
+{
+  "name": "A+ Content",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+	{
+      "type": "image_picker",
+      "id": "image1",
+      "label": "t:sections.image-banner.settings.image.label"
+    },
+	{
+      "type": "image_picker",
+      "id": "image2",
+      "label": "Second Image"
+    },
+	{
+      "type": "image_picker",
+      "id": "image3",
+      "label": "Third Image"
+    },
+	{
+      "type": "text",
+      "id": "acontent_text_1",
+      "label": "Text After Banner 3"
+    },
+	{
+      "type": "image_picker",
+      "id": "image4",
+      "label": "Fourth Image"
+    },
+	{
+      "type": "text",
+      "id": "acontent_text_2",
+      "label": "Text After Banner 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "A+ Content Image Banners",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

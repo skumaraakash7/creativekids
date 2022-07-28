@@ -1,0 +1,79 @@
+
+
+<div id="Banner-{{ section.id }}" class="aPlusContent--outer__container">
+  <div  class="aPlusContent--container">
+  {%- if section.settings.image1 != blank -%}
+    <div class="aPlusContent">
+      <img srcset="
+        {{ section.settings.image1 | img_url: '1500x' }}"
+        alt="{{ section.settings.image1.alt | escape }}"
+      >
+    </div>
+  {%- endif -%}
+   
+  </div>
+</div>
+
+
+
+<style>
+  .aPlusContent--outer__container {
+  margin: -30px auto auto auto;
+    
+  }
+  .aPlusContent--container {
+  max-width: 1400px;
+    margin: auto;
+  background-color: white;
+  }
+  .aPlusContent img {
+  max-width: 100%;
+  text-align: center;
+}
+  .aPlusContent h5 {
+    font-size: 18px;
+	max-width: 100%;
+  }
+
+  .aPlusContent p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+@media screen and (max-width: 450px)
+.aPlusContent--container {
+    width: 100%!important;
+}  
+
+@media screen and (min-width: 750px) {
+  .aPlusContent--container{
+    width: 80%;
+  }
+}
+  
+@media screen and (min-width: 451px) and (max-width: 1199px) {
+.aPlusContent--container {
+    width: 90%;
+}  
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Standard Homepage Banner",
+  "tag": "section",
+  "settings": [
+	{
+      "type": "image_picker",
+      "id": "image1",
+      "label": "Standard Homepage Banner"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Standard Homepage Banner",
+      "blocks": []
+    } 
+    ]
+}
+{% endschema %}

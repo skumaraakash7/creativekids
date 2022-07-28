@@ -1,0 +1,95 @@
+<style>
+  .globe-ctn {
+    text-align: center;
+    background: white;    
+    padding-top: 40px;
+  }
+  .globe-gif {
+   margin: auto; 
+    text-align: center;
+    background: white;   
+  }
+  .globe-gif img {
+   max-width: 100%; 
+  }
+  .globe-call_text-ctn {
+   border-bottom: 1px solid black; 
+    padding-bottom: 1rem;
+    margin: 2rem 1rem;
+  }
+  .globe-call_text h2 {
+    font-weight: 700;
+    font-size: 25px;
+    padding: 1rem 0;
+    background: white;    
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .globe-call_text-top h2 {
+    font-size: 35px;
+  }
+  .globe-call_text-top h2 span {
+    font-size: 50px;
+  }  
+  
+  
+  
+</style>
+
+<div class="globe-ctn  page-width">
+    <div class="globe-call_text-top">
+    <h2>{{ section.settings.callout1 }}</h2>
+  </div> 
+<div class="globe-gif">
+  <img src="{{ section.settings.globe_gif | img_url:'master' }}" /> 
+</div>
+  <div class="globe-call_text-ctn">
+   <div class="globe-call_text">
+    <h2>{{ section.settings.callout2 }}</h2>
+  </div> 
+   <div class="globe-call_text">
+    <h2>{{ section.settings.callout3 }}</h2>
+  </div> 
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Globe Gif",
+    "settings": [
+{
+"type": "textarea",
+"id": "callout1",
+"label": "Callout Text 1"
+},
+{
+"id"	: "globe_gif",
+"type"	: "image_picker",
+"label" : "Globe Gif File"
+},
+{
+"type": "textarea",
+"id": "callout2",
+"label": "Callout Text 2"
+},
+{
+"type": "textarea",
+"id": "callout3",
+"label": "Callout Text 3"
+}
+],
+"presets": [
+{
+"name": "Globe Gif",
+"category": "Custom Sections"
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,235 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .custom-newsletter h1 {
+    font-size: 4rem !important;
+  }  
+  .custom-newsletter {
+    background: url({{ section.settings.newsletter_bkg | img_url : 'master' }});    
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position: center;
+  }
+  /*   my-css */
+  .custom-newsletter .newsletter-form__field-wrapper input {
+    padding: 18px;
+    color: #7A2A63;
+    font-weight: 100 !important;
+  }
+  @media screen and (max-width: 600px) {
+    .custom-newsletter #contact_form {
+      display: flex;
+      align-items: center !important;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .custom-newsletter__wrapper.color->h2.h1 {
+      font-size: 2.45rem !important;
+      font-weight: 900;
+    }
+    .page-width.custom-newsletter.center {
+      width: 90% !important;
+	 border-radius: 15px;
+    }
+    button.newsletter__button.button {
+      margin-top: 0 !important;
+      padding: 5px 5px 5px 25px !important;
+      min-height: 35px;
+    }
+    input#NewsletterForm--template--15213064749208__16349463564ad872b0 {
+      padding: 5px 10px !important;
+      box-shadow: none;
+      font-size: 12px;
+      height: 35px;
+    }
+/*     input#NewsletterForm--template--15213064749208__16349463564ad872b0[value="SunshineSam@CreativeKids.com"] {
+      color: #dbd6d6;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      font-family: sans-serif !important;
+      text-align: center;
+    } */
+    button.newsletter__button.button {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+    }
+    .custom-newsletter__wrapper.color- {
+      padding: 0 15px;
+    }
+    .custom-newsletter .field__label {
+      font-size: 2.5vw;
+    }
+    .newsletter-form__field-wrapper>.field {
+      position: absolute;
+      top: 0;
+      width: 72%;
+    }
+  }
+  
+/*   @media screen and (max-width: 350px) {
+    .newsletter-form__field-wrapper>.field {
+      width: 67% !important;
+    }
+  }
+  .page-width.custom-newsletter.center.full-width {
+    width: 100% !important;
+  }
+  @media screen and (max-width: 1750px) and (min-width: 1200px) {
+    section#shopify-section-template--15213064683672__16427151508178e84d {
+      max-width: 80%;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    section#shopify-section-template--15213064683672__16427151508178e84d {
+      max-width: 90%;
+    }
+  } */
+  
+    .custom-newsletter .newsletter-form__field-wrapper input::placeholder {
+    opacity: 1;
+  }
+</style>
+
+<center>
+  <div class="bottom-white-space page-width-bottom-white-space">
+  <span></span>
+  </div>
+</center>
+<div class="page-width custom-newsletter center {% if section.settings.full_width == false %} full-width newsletter--narrow{% endif%}">
+  <div class="custom-newsletter__wrapper color-{{ section.settings.color_scheme }}">
+    {%- for block in section.blocks -%}
+    {%- case block.type -%}
+    {%- when 'heading' -%}
+    <h2 class="h1">{{ block.settings.heading | escape }}</h2>
+    {%- when 'paragraph' -%}
+    <div class="newsletter__subheading rte">{{ block.settings.paragraph }}</div>
+    {%- when 'email_form' -%}
+    {% form 'customer', class: 'newsletter-form my-form-custom-1' %}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <div class="newsletter-form__field-wrapper">
+      <div class="field">
+        <input
+               id="NewsletterForm--{{ section.id }}"
+               type="email"
+               placeholder="{{ 'newsletter.label' | t }}"               
+               {% comment %}value="SunshineSam@CreativeKids.com"{% endcomment %}
+               name="contact[email]"
+               class="field__input"
+               value="{{ form.email }}"
+               aria-required="true"
+               autocorrect="off"
+               autocapitalize="off"
+               autocomplete="email"
+               {% if form.errors %}
+               autofocus
+               aria-invalid="true"
+               aria-describedby="Newsletter-error--{{ section.id }}"
+               {% elsif form.posted_successfully? %}
+               aria-describedby="Newsletter-success--{{ section.id }}"
+               {% endif %}
+               required
+               >
+               {% comment %}
+        <label class="field__label" for="NewsletterForm--{{ section.id }}">
+SunshineSam@CreativeKids.com
+</label>
+        {% endcomment %}
+      </div>
+      {%- if form.errors -%}
+      <small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">{% render 'icon-error' %}{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</small>
+      {%- endif -%}
+    </div>
+    <button type="submit" class="newsletter__button button" name="commit">
+      Let's go!
+    </button>
+    {%- if form.posted_successfully? -%}
+    <h3 class="newsletter-form__message newsletter-form__message--success form__message" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>{% render 'icon-success' %}{{ 'newsletter.success' | t }}</h3>
+    {%- endif -%}
+    {% endform %}
+    {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<center>
+  <div class="bottom-white-space page-width-bottom-white-space">
+  <span></span>
+  </div>
+</center>
+
+{% schema %}
+{
+"name": "Article Newsletter",
+"tag": "section",
+"settings": [
+
+{
+"type": "checkbox",
+"id": "full_width",
+"default": true,
+"label": "t:sections.newsletter.settings.full_width.label"
+},
+
+{
+"id" 	: "newsletter_bkg",
+"label" : "Background",
+"type"	: "image_picker"
+},
+{
+"type": "paragraph",
+"content": "t:sections.newsletter.settings.paragraph.content"
+}
+],
+"blocks": [
+{
+"type": "heading",
+"name": "t:sections.newsletter.blocks.heading.name",
+"limit": 1,
+"settings": [
+{
+"type": "text",
+"id": "heading",
+"default": "Subscribe to our emails",
+"label": "t:sections.newsletter.blocks.heading.settings.heading.label"
+}
+]
+},
+{
+"type": "paragraph",
+"name": "t:sections.newsletter.blocks.paragraph.name",
+"limit": 1,
+"settings": [
+{
+"type": "richtext",
+"id": "paragraph",
+"default": "<p>Be the first to know about new collections and exclusive offers.</p>",
+"label": "t:sections.newsletter.blocks.paragraph.settings.paragraph.label"
+}
+]
+},
+{
+"type": "email_form",
+"name": "t:sections.newsletter.blocks.email_form.name",
+"limit": 1
+}
+],
+"presets": [
+{
+"name": "Article Newsletter",
+"blocks": [
+{
+"type": "heading"
+},
+{
+"type": "paragraph"
+},
+{
+"type": "email_form"
+}
+]
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+<cart-notification>
+  <div class="cart-notification-wrapper page-width">
+    <div id="cart-notification" class="cart-notification focus-inset" aria-modal="true" aria-label="{{ 'general.cart.item_added' | t }}" role="dialog" tabindex="-1">
+      <div class="cart-notification__header">
+        <h2 class="cart-notification__heading caption-large">{%- render 'icon-checkmark' -%} {{ 'general.cart.item_added' | t }}</h2>
+        <button type="button" class="cart-notification__close cart-notification__close_icon modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+          <svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="#icon-close" /></svg>
+        </button>
+      </div>
+      <div id="cart-notification-product" class="cart-notification-product"></div>
+      <div class="cart-notification__links">
+        <a href="{{ routes.cart_url }}" id="cart-notification-button" class="button button--secondary button--full-width btn_view_cart"></a>
+        <form action="{{ routes.cart_url }}" method="post" id="cart">
+          <button class="button button--primary button--full-width btn_checkout" name="checkout" form="cart">{{ 'sections.cart.checkout' | t }}</button>
+        </form>
+        <button type="button" class="link button-label cnt_shopping">{{ 'general.continue_shopping' | t }}</button>
+      </div>
+    </div>
+  </div>
+</cart-notification>
+{% style %}
+  .cart-notification {
+     display: none;
+  }
+  .icon-checkmark  {
+  stroke: #a40095 !important;
+  stroke-width: 2px;
+  }
+  .icon-close  {
+  stroke: #efff00 !important;
+  stroke-width: 4px;
+  }
+  .cart-notification__close_icon {
+          padding: 7px;
+          border-radius: 30px;
+          box-shadow: 3px 2px 8px #000;
+          border: 0px;
+          background-image: linear-gradient(#a40095 -34%,#a40095 60%);
+
+  }  
+  .btn_view_cart {
+          width: 100%;
+          color: #777154;
+          font-size: 15px;
+          font-weight: 700;
+          padding: 7px;
+          border-radius: 30px;
+          box-shadow: 2px 2px 6px 0px #000;
+          border: 0px;
+          background-image: linear-gradient(#ecff00, #f5cc00);
+        }  
+  .btn_checkout {
+          width: 100%;
+          color: white;
+          font-size: 15px;
+          font-weight: 700;
+          padding: 7px;
+          border-radius: 30px;
+          box-shadow: 2px 2px 6px 0px #000;
+          border: 0px;
+          background-image: linear-gradient(#a00093,#730083);
+        }   
+  .cnt_shopping {
+  color: black;
+  }
+{% endstyle %}

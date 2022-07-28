@@ -1,0 +1,151 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+<style>
+  .home_hero_slider-background-color {
+    margin: auto;
+  }
+  .home_hero_slider {
+  margin-top: -10px;  
+  }
+  .swiper-container {
+    overflow-x: hidden;
+  }
+  .slide-cont img {
+    width: 100%;
+  }
+  .slide-cont iframe {
+    width: 100%;
+  }
+  .swiper-container{
+    position:relative;
+  }
+
+  .home_hero_slider .page-width {
+    padding: 0px;
+    max-width: 1925px;
+    width: 100%;
+  }
+
+  @media screen and (max-width:550px) {
+    .slide-cont img {
+      width: 100%;
+      height: 260px;
+    }
+    .slide-bg.slide-bg2 {
+      height: auto;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .home_hero_slider .page-width {
+            width: 100%;
+
+    }
+  }
+  .top-image-hero {
+  z-index: 1;
+    height: 100%!important;
+  }
+  .bottom-image-hero {
+  z-index: 0; 
+  background: #fff !important;
+  height: 100px;
+  margin: -100px auto auto auto;
+  }
+  .page-width-hero-page {
+  max-width: 1400px;
+  padding: 0 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width-hero-page{
+    padding: 0 5rem;
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 1199px) {
+.page-width-hero-page {
+    width: 90%;
+  padding: 0 9rem;
+}
+}
+    .bottom-image-hero {
+   display: block !important; 
+  }
+  
+ .swiper-slide-no-image {
+   background-color: white;
+   margin: auto;
+ }
+  
+@media screen and (max-width: 767px) {
+ .swiper-slide-no-image {
+    margin-bottom: 1rem;
+  }
+}  
+@media screen and (min-width: 768px) and (max-width: 990px) {
+ .swiper-slide-no-image {
+    margin-bottom: 5rem;
+  }
+}
+@media screen and (min-width: 991px) {
+ .swiper-slide-no-image {
+    margin-bottom: 10rem;
+  }
+}   
+  
+  .hero-images-container {
+    background-color: #fff !important;
+  }
+</style>
+
+<div class="home_hero_slider">
+  <div class="page-width">
+    <div class="swiper-container"> 
+      <div class="swiper-wrapper">
+        {%- if section.settings.slid-img -%}
+
+        <div class="swiper-slide">
+          <div class="slide-cont"> 
+            <div class="slide-bg slide-bg2">
+               <div class="home_hero_slider-background-color">
+			<div class="hero-images-container">
+              <img class="slide-item top-image-hero" src="{{ section.settings.slid-img.src | img_url : 'master'  }}" >
+              <div class="bottom-image-hero page-width-hero-page"></div>
+			</div>                                                                                    
+				</div>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="swiper-slide-no-image page-width-hero-page">
+        </div>
+        {% endif %}
+      </div> 
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+
+{
+"name": "Page Hero Banner",
+"settings": [
+{
+"id" : "slid-img",
+"type" : "image_picker",
+"label" : "Image"
+}
+],
+"presets": [
+{
+"name": "Page Hero Slider",
+"category": "Custom Sections"
+}
+]
+}
+{% endschema %}

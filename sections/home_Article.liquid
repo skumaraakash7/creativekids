@@ -1,0 +1,1034 @@
+<style>
+  body {
+    background-color: #FAF8F6;
+  }
+
+  section#shopify-section-template--15213064749208__1629829807a4667206 {
+    margin-top: 0 !important;
+  }
+
+  .blog_article_homepage_section .feat-col, .blog_article_homepage_section .blog-col {
+    background: #fff;
+    margin-bottom: 20px;
+    margin-left: 0px;
+  }  
+  h2.bg_or_11.hhhhh {
+    border-radius: 0 !important;
+  }
+  @media screen and (min-width:992px){
+    .blog_article_homepage_section .feat-col, .blog_article_homepage_section .blog-col {
+      padding: 0;
+    }
+    .blog_article_homepage_section .blog-col {
+      width: calc(33.3% - 20px);
+      margin-left: 20px;
+    }
+    .blog_article_homepage_section .main-row {
+      padding: 0 10px;
+    }
+  }
+  .mobile__slider_ar {
+    display: none;
+  }
+    .blog__posts_limits_00_ttp .swiper {
+      display: none;
+    }  
+  /*   my-css */
+  @media screen and (min-width: 601px) {
+    h2.bg_or_11 {
+/*       background: #F45B1F !important; */
+    }
+  }
+  .mobile__slider_ar article:last-child a.link_flexy_00 {
+    border-bottom: 0px solid gray;
+  }
+  @media screen and (max-width: 991px) {
+    .pd_rr.col-lg-8.col-md-12.col-sm-12 {
+      padding: 25px 2px !important;
+    }
+    a.link_flexy_00 {
+      border-bottom: 1px solid gray;
+    }
+    .fnt_set {
+      margin-top: 0 !important;
+    }
+    ul.blog__posts_limits_00.blog__posts_limits_00_ttp.multiple_blogs.blog__posts--5-items {
+      padding-top: 0 !IMPORTANT;
+    }
+    h2.bg_or_11.pruple-bg-btn {
+/*       border-radius: 8px !important; */
+      background-repeat: round;
+      color: white;
+    }   
+    .endif_sec_all_blogy a {
+     color: white !important; 
+    }
+    .fon_bi_ppp {
+      font-size: 2.5rem;
+    }
+    .blog__posts_limits_00 p {
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 400;
+    }
+    .width_60_per {
+      margin-bottom: 0 !important;
+    }
+    .endif_sec_all_blogy {
+      margin-top: 0 !important;
+    }
+    .px-3.py-4.lg\:px-6.lg\:py-6 {
+      padding-bottom: 0 !important;
+      padding-top: 1rem!important;
+    }
+    section#shopify-section-template--15213064749208__1629829807a4667206 {
+      margin-top: 0 !important;
+    }
+  }
+  .my-custom-row {
+    align-items: center;
+  }
+  @media screen and (max-width: 350px) {
+    h2.bg_or_11.pruple-bg-btn {
+      font-size: 28px !important;
+    }
+  }
+  @media screen and (min-width: 600px) {
+    h2.bg_or_11.pruple-bg-btn {
+/*       background: #9f238f !important; */
+    }
+  }
+  @media screen and (min-width: 601px) {
+    .remove-border-btn {
+      border-radius: 0 !important;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .hide-at-991 {
+      display: none;
+    }
+  }
+</style>
+
+<div class="blog_article_homepage_section">  
+  <div class="page-width">
+    <div class="row main-row">
+      <div class="col-lg-8 col-md-12 col-sm-12 feat-col">
+        <div class="width_60_per">
+
+          <div class="{% if section.settings.soft_background %} background-secondary{% endif %}{% if section.settings.heading == blank %} no-heading{% endif %}">
+            <div>
+              <div class="feature_title">
+                <h1 class="bg_or_11 pruple-bg-btn" style="background-image:url({{ 'Featured_Blog_Banner.png' | asset_url }});">{{ section.settings.feature_heading | escape }}</h1>
+              </div>
+              {%- liquid
+      if section.settings.post_limit <= section.settings.blog.articles_count
+        assign posts_exceed_limit = true
+      endif
+    -%}
+              {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+              <ul
+                  class="blog__posts_limits_00 blog__posts_par_left {% if posts_exceed_limit %} blog__posts--{{ section.settings.post_limit }}-items{% else %} blog__posts--{{ section.settings.blog.articles_count }}-items{% endif %}"
+                  role="list"
+                  >
+                {%- for article in section.settings.blog.articles limit: 1 -%}
+                <li>
+                  <article class="{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+                    <a href="{{ article.url }}">
+                      {%- if show_image == true or article.image -%}
+                      <div class="motion-reduce width_100di img_aah" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+
+                      </div>
+                      {%- endif -%}
+
+                      <div class="px-3 py-4 lg:px-6 lg:py-6">
+                        {%- for block in section.blocks -%}
+                        {%- case block.type -%}
+                        {%- when 'title'-%}
+                        <header>
+                          <h2 class="fon_bi_ppp" id="Article-{{ article.id }}">
+                            {{ article.title | escape }}
+
+                          </h2>
+                          <p class="new_excerpt">{{ article.excerpt }}</p>
+
+                          {%comment%}
+                          <div class="opac_5 fon_bi_ppp_00">
+                            {%- if block.settings.show_author -%}
+                            <span class="caption-with-letter-spacing">{{ article.author }} : </span>
+                            {%- endif -%}                        
+                            {%- if block.settings.show_date -%}
+                            <span>
+                              {{ article.published_at | date: "%B %-d, %Y at %-l:%M %P"  }}
+                              {% comment %}
+                              {{- article.published_at | date: "%a, %b %d, %y" -}}
+                              This has all the time zones
+                              {{ article.published_at | date: "%A, %B %-d, %Y at %-l:%M %P %z"  }}
+                              -----------
+                              {{- article.published_at | time_tag: format: 'month_year' -}}
+                              {% endcomment %}
+                            </span>
+                            {%- endif -%}
+                          </div>
+
+                          {%endcomment%}
+
+                        </header>
+                        {%- endcase -%}
+                        {%- endfor -%}
+                      </div>
+                    </a>
+                  </article>
+                </li>
+                {%- endfor -%}
+              </ul>
+              {%- else -%}
+              <div class="placeholder">
+                <h2>
+                  {{ 'sections.featured_blog.onboarding_title' | t }}
+                </h2>
+                <p class="rte-width">
+                  {{ 'sections.featured_blog.onboarding_content' | t }}
+                </p>
+              </div>
+              {%- endif -%}
+            </div>
+          </div>          
+        </div>
+        {% comment %}
+        <div class="Home_featured_product">          
+          <div class="lg:mb-6 mb-3">
+            <article class="rounded-md overflow-hidden bg-white ">
+              <a class="block focus:outline-black m-1" title="Micro Kickboard Maxi Scooter Deluxe LED" href="{{ all_products[section.settings.featured_product_handle].url }}">
+                <div class="mt-3 flex justify-center">
+                  <img width="800" height="800" alt="" loading="lazy" class="img_tag_pro_ii h-64 lg:h-featured-media object-contain" src="{{ all_products[section.settings.featured_product_handle].featured_image | img_url:'master' }}">
+                </div>
+              </a>
+              <div class="felex_gr_ptt pb-4 flex flex-grow flex-col">
+                <a class="block flex-grow focus:outline-black" href="{{ all_products[section.settings.featured_product_handle].url }}">
+                  <h3 class="mb-3 text-sm font-serif leading-5">
+                    {{ all_products[section.settings.featured_product_handle].title }}
+                  </h3>
+                  <p class="mb-6 text-gray-700 text-sm leading_5_textt_dec">
+                    {{ section.settings.featured_product_desc | strip_html }}
+                  </p>
+                </a>
+                <div class="border_t_pxy pt-3">
+                  <div class="text-lg lex_pro_cam_1">
+                    {% if all_products[section.settings.featured_product_handle].compare_at_price > all_products[section.settings.featured_product_handle].price %}
+                    <del class="price-sale">
+                      {{all_products[section.settings.featured_product_handle].compare_at_price | money }}
+                    </del>
+                    <span class="price-color">{{ all_products[section.settings.featured_product_handle].price | money }}</span>
+                    {% else %}
+                    <span class="price-color">{{ all_products[section.settings.featured_product_handle].price | money }}</span>
+                    {% endif %}
+                  </div>
+                  <div class="ml-auto lex_pro_cam_1_3">
+                    <a class="btn_texy_based btn lex_pro_cam_1_2" href="{{ all_products[section.settings.featured_product_handle].url  }}">
+                      Shop colors and sizes
+                    </a> 
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!--         Jay removed per client request -->
+        <!-- Swiper -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+        <div class="swiper_disclosed">
+          <div class="back_to_sc">
+            <h1>{{ section.settings.all_collection_text }}</h1>
+            <p><a href="{{ collections[section.settings.all_collection].url }}">See all products</a></p>
+          </div>
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">          
+              {% for product in collections[section.settings.all_collection].products limit:15 %}
+              <div class="swiper-slide">
+                <a href="{{ product.url }}" class="collection-slider">
+                  <img class="product-image1" src="{{ product.featured_image | img_url:'master' }}" class="img-width">
+                  <div class="arrival_h2_price_contentry">
+                    <h5 class="text-left-slider">{{ product.title }}</h5> 
+                    <p class="price-line text-left-slider-p">
+                      {% if product.compare_at_price > product.price %}
+                      <del class="price-sale">
+                        {{product.compare_at_price | money }}
+                      </del>
+                      <span class="price-color">{{ product.price | money }}</span>
+                      {% else %}
+                      <span class="price-color">{{ product.price | money }}</span>
+                      {% endif %}
+                    </p>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+        {% endcomment %}
+
+        {% if section.settings.banner_show %}
+        <div class="banner_locations_drop endif_sec_all_blogy">
+          <img src="{{ section.settings.banner_image | img_url:'master' }}">
+          <div class="banner_locations_drop_al">
+            <h1>{{ section.settings.banner_title }}</h1>
+            <p>{{ section.settings.banner_desc }}</p>
+            {% if section.settings.banner_text != blank %}
+            <div class="anchor_done__all"> <a href="{{ section.settings.banner_link }}">{{ section.settings.banner_text }}</a></div>
+            {% endif %}
+            {% if section.settings.banner_locations %}
+            <div class="x_spread_bn">
+              <button x-spread="button" type="button" class="eset_pp_pk bg-black text-white">
+                <span class="">
+                  5th Avenue
+                </span>
+                <div x-spread="icon" class="eset_pp bg-white text-black">
+                  <svg class="h-3 w-3 stroke-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+              </button>
+            </div>
+            <div class="dropdown_x_ra_99">
+              <div class="dropdown_x_ra">
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>5th Avenue</div>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>Brooklyn</div>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>Columbus Circle</div>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>Dallas</div>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>Hudson Yards</div>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>Los Angeles</div>
+                    <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+                <div class="dropdown_x_ra_1">
+                  <a href="/locations/fifth-ave-nyc">
+                    <div>South Norwalk</div>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                  </a>
+                </div>
+              </div>
+            </div>                
+            {% endif %}
+          </div>
+        </div>            
+        {% endif %}        
+
+        <!-- Initialize Swiper -->
+        <div class="endif_sec_all_blogy">
+
+          <div class="{% if section.settings.soft_background %} background-secondary{% endif %}{% if section.settings.heading == blank %} no-heading{% endif %}">
+            <div>
+              <div class="{% if section.settings.heading == blank %} title-wrapper-with-link--no-heading{% endif %}">
+                <h1 class="bg_or_11 pruple-bg-btn" style="background-image:url({{ 'Blog_Posts_Banner.png' | asset_url }});"><a href="/blogs/{{ section.settings.blog }}" style="<!-- text-decoration: none !important; -->color: white !important;">{{ section.settings.heading_mobile | escape }}</a></h1>
+
+                {%- if section.settings.blog != blank and section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
+                <a href="{{ section.settings.blog.url }}">
+                  {{ 'sections.featured_blog.view_all' | t }}
+                </a>
+                {%- endif -%}
+              </div>
+              {%- liquid
+      if section.settings.post_limit <= section.settings.blog.articles_count
+        assign posts_exceed_limit = true
+      endif
+    -%}
+              {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+
+
+
+
+              <!-- Demo styles -->
+              <style>
+
+              </style>                                
+              <ul
+                  class="blog__posts_limits_00 blog__posts_limits_00_ttp multiple_blogs  {% if posts_exceed_limit %} blog__posts--{{ section.settings.post_limit }}-items{% else %} blog__posts--{{ section.settings.blog.articles_count }}-items{% endif %}"
+                  role="list"
+                  >
+                <div class="swiper mySwiper">
+                  <div class="swiper-wrapper">
+                    {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+                    {% if forloop.index == 1 %}
+
+                    {% else %}
+                    <div class="swiper-slide">
+                      <li class="padding_bot_dd afzaal">
+                        <article class="{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+                          <a href="{{ article.url }}" class="link_flexy_00">
+                            <div class="row my-custom-row">
+                              <div class="col-lg-4 col-md-12 col-sm-12">
+                                {%- if show_image == true or article.image -%}
+                                <div class="motion-reduce width_100di" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+
+                                </div>
+                                {%- endif -%}                    
+                              </div>
+                              <div class=" pd_rr col-lg-8 col-md-12 col-sm-12">
+                                <div>
+                                  {%- for block in section.blocks -%}
+                                  {%- case block.type -%}
+                                  {%- when 'title'-%}
+                                  <header>
+                                    <h2 class="fnt_set" id="Article-{{ article.id }}">
+                                      {{ article.title | escape }}
+                                    </h2>
+                                    <div class="opac_5">
+                                      {%- if block.settings.show_author -%}
+                                      <span class="caption-with-letter-spacing">{{ article.author -}} : </span>
+                                      {%- endif -%}
+                                      {%- if block.settings.show_date -%}
+                                      <span>
+                                        {{ article.published_at | date: "%B %-d, %Y"  }}
+                                      </span>
+                                      {%- endif -%}
+                                    </div>
+                                  </header>
+
+                                  {%- endcase -%}
+                                  {%- endfor -%}
+                                </div>
+                              </div>                    
+                            </div>
+                          </a>
+                        </article>
+                      </li> 
+                    </div>
+
+                    {% endif %}
+                    {%- endfor -%}
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="mobile__slider_ar">
+
+                  {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}                                      
+                  {% if forloop.index == 1 %}
+
+                  {% else %}
+                  <article class="{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+                    <a href="{{ article.url }}" class="link_flexy_00">
+                      <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                          {%- if show_image == true or article.image -%}
+                          <div class="motion-reduce width_100di" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+
+                          </div>
+                          {%- endif -%}                    
+                        </div>
+                        <div class=" pd_rr col-lg-8 col-md-12 col-sm-12">
+                          <div>
+                            {%- for block in section.blocks -%}
+                            {%- case block.type -%}
+                            {%- when 'title'-%}
+                            <header>
+                              <h2 class="fnt_set" id="Article-{{ article.id }}">
+                                {{ article.title | escape }}
+                              </h2>
+                              <div class="opac_5">
+                                {%- if block.settings.show_author -%}
+                                <span class="caption-with-letter-spacing">{{ article.author -}} : </span>
+                                {%- endif -%}
+                                {%- if block.settings.show_date -%}
+                                <span>
+                                  {{ article.published_at | date: "%B %-d, %Y"  }}
+                                </span>
+                                {%- endif -%}
+                              </div>
+                            </header>
+
+                            {%- endcase -%}
+                            {%- endfor -%}
+                          </div>
+                        </div>                    
+                      </div>
+                    </a>
+                  </article>                    
+                  {% endif %}
+                  {%- endfor -%}
+                </div>
+
+              </ul>
+              <script>
+                var swiper = new Swiper(".blog__posts_limits_00_ttp .mySwiper", {
+                  pagination: {
+                    el: ".blog__posts_limits_00_ttp .swiper-pagination",
+                    clickable: true,
+                  },
+                  breakpoints: {
+                    640: {
+                      slidesPerView: 1,
+                      spaceBetween: 12,
+                    },
+                    640: {
+                      slidesPerView: 2,
+                      spaceBetween: 13,
+                    },
+                    768: {
+                      slidesPerView: 2,
+                      spaceBetween: 13,
+                    },
+                    1024: {
+                      slidesPerView: 5,
+                      spaceBetween: 13,
+                    },
+                  },
+                });
+              </script>
+              {%- if section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
+              <div class="blog__view-all center small-hide medium-hide">
+                <a href="{{ section.settings.blog.url }}" class="blog__button button">
+                  {{ 'sections.featured_blog.view_all' | t }}
+                </a>
+              </div>
+              {%- endif -%}
+              {%- else -%}
+              <div class="placeholder">
+                <h2>
+                  {{ 'sections.featured_blog.onboarding_title' | t }}
+                </h2>
+                <p class="rte-width">
+                  {{ 'sections.featured_blog.onboarding_content' | t }}
+                </p>
+              </div>
+              {%- endif -%}
+            </div>
+          </div>  
+
+        </div>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+          var swiper_1 = new Swiper(".swiper_disclosed .mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+              el: ".swiper_disclosed .swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+              "@0.00": {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              "@0.75": {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              "@1.00": {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              }
+            },
+          });
+        </script>      
+        <style>
+        </style>
+
+        {% comment %}
+        <!-- Jay removed per client request         -->
+        <div class="blog_category_articles_all  mt-5">
+          <div class="get_al_art">
+            <h1 class="latest_ar">Latest Articles</h1>
+            <div class="blof_filteration_1 bg-white w-full rounded-md p-3 mt-4  mb-4">
+              <p class="blof_filteration_100">FILTER BY AGE</p>
+              <div class="dipslya_flx_blog">
+                {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                {%- when 'blog'-%}
+                <div class="dipslya_flx_blog_11">
+                  <a href="{{ blogs[block.settings.selected_blog].url }}"><p> {{ blogs[block.settings.selected_blog].title }} </p></a>
+                </div>
+                {%- endcase -%}
+                {%- endfor -%}
+              </div>            
+            </div>
+            <div class="blof_filteration_2">
+              <div class="row">
+                {% for article in section.settings.blog_latest_articles.articles  %}
+                {% if forloop.index < 3 %}
+                <div class="at_url  col-lg-6 col-md-6 col-sm-12">
+                  <div class="bg-white height_200_pe">
+                    <a href="{{ article.url }}">
+                      {%- if show_image == true or article.image -%}
+                      <div class="motion-reduce width_100di img_aah" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+                      </div>
+                      {%- endif -%}
+                      <div class="px-3 py-4 lg:px-6 lg:py-6">
+                        {%- for block in section.blocks -%}
+                        {%- case block.type -%}  
+                        {%- when 'title'-%}
+                        <header>   
+                          <h2 class="fon_bi_ppp" id="Article-{{ article.id }}">
+                            {{ article.title | escape }}
+                          </h2>
+                          <p class="article_content_0009">{{article.content}}</p>                          
+                          <div class="opac_5 fon_bi_ppp_00">
+                            {%- if block.settings.show_author -%}
+                            <span class="caption-with-letter-spacing">{{ article.author }} : </span>
+                            {%- endif -%}                        
+                            {%- if block.settings.show_date -%}
+                            <span>
+                              {{ article.published_at | date: "%B %-d, %Y at %-l:%M %P"  }}
+                              {% comment %}
+                              {{- article.published_at | date: "%a, %b %d, %y" -}}
+                              This has all the time zones
+                              {{ article.published_at | date: "%A, %B %-d, %Y at %-l:%M %P %z"  }}
+                              -----------
+                              {{- article.published_at | time_tag: format: 'month_year' -}}
+                              {% endcomment %}
+                            </span>
+                            {%- endif -%}
+                          </div>
+
+                        </header>
+                        {%- endcase -%}
+                        {%- endfor -%}
+                      </div>
+                    </a>
+                  </div>
+                </div>  
+                {% endif %}
+
+
+                {% if forloop.index > 2 %}
+                <div class="at_url multiple_than_2 ">
+                  <div class="bg-white">
+                    <a href="{{ article.url }}">
+                      {%- if show_image == true or article.image -%}
+                      <div class="motion-reduce width_100di img_aah" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+                      </div>
+                      {%- endif -%}
+                      <div class="px-3 py-4 lg:px-6 lg:py-6">
+                        {%- for block in section.blocks -%}
+                        {%- case block.type -%}  
+                        {%- when 'title'-%}
+                        <header>   
+                          <h2 class="fon_bi_ppp" id="Article-{{ article.id }}">
+                            {{ article.title | escape }}
+                          </h2>
+                          <p class="article_content_0009">{{ article.content | truncate: 200 , "" }}</p>
+                          <div class="opac_5 fon_bi_ppp_00">
+                            {%- if block.settings.show_author -%}
+                            <span class="caption-with-letter-spacing">{{ article.author }} : </span>
+                            {%- endif -%}                        
+                            {%- if block.settings.show_date -%}
+                            <span>
+                              {{ article.published_at | date: "%B %-d, %Y at %-l:%M %P"  }}
+                              {% comment %}
+                              {{- article.published_at | date: "%a, %b %d, %y" -}}
+                              This has all the time zones
+                              {{ article.published_at | date: "%A, %B %-d, %Y at %-l:%M %P %z"  }}
+                              -----------
+                              {{- article.published_at | time_tag: format: 'month_year' -}}
+                              {% endcomment %}
+                            </span>
+                            {%- endif -%}
+                          </div>
+
+                        </header>
+                        {%- endcase -%}
+                        {%- endfor -%}
+                      </div>
+                    </a>
+                  </div>
+                </div>  
+                {% endif %}
+
+                {% endfor %} 
+                <div class="read_more_btn_par">
+                  <button class="read_more_btn">Read More</button>
+                </div>
+                <script>
+                  $(document).ready(function(){
+                    if ($(".at_url").hasClass("multiple_than_2")) {
+                      $(".read_more_btn").removeClass("d-none");
+                    }
+                    else {     
+                      $(".read_more_btn").addClass("d-none");  
+                    }  
+
+                    $(".read_more_btn").click(function(){
+                      $(".at_url.multiple_than_2").slideToggle();
+                    });
+                  });
+                  $(".read_more_btn").click(function(){
+                    var text = $(this).text();
+                    console.log(text);
+                    if(text == "Read More") {
+                      $(this).text("Read Less");
+                    }
+                    else {
+                      $(this).text("Read More");
+                    }
+                  });  
+                </script>  
+
+              </div>
+            </div>
+            {% comment %}
+            {% assign blog_handles = "All" | split: "," %}
+            {% assign blog_tag = "blog-handle-1" %}
+            {% for tag in blog.all_tags %}
+            {{ tag }}
+            {% endfor %}
+            {% for handle in blog_handles %}
+            <p>{{ blog.title }}</p>
+            {% for article in blogs[handle].articles %}
+            {% if article.tags contains blog_tag %}
+            {% assign article_handles = article_handles | append: article.handle | append: "," %}
+            <h1>{{ article.title | escape }}</h1>            
+            {%endif%}
+            {% endfor %}
+            {% endfor %}
+            {% endcomment %}
+          </div>
+        </div>
+        {% endcomment %}
+      </div>
+
+      <div class="col-lg-4 col-md-12 col-sm-12 blog-col">
+
+        <div class="endif_sec_all_blogy_000 hide-at-991 {% if section.settings.soft_background %} background-secondary{% endif %}{% if section.settings.heading == blank %} no-heading{% endif %}">
+          <div>
+            <div class="{% if section.settings.heading == blank %} title-wrapper-with-link--no-heading{% endif %}">
+              <h2 class="bg_or_11 remove-border-btn" style="background-image:url({{ 'Blog_Posts_Banner.png' | asset_url }})">{{ section.settings.heading | escape }}</h2>
+
+              {%- if section.settings.blog != blank and section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
+              <a href="{{ section.settings.blog.url }}">
+                {{ 'sections.featured_blog.view_all' | t }}
+              </a>
+              {%- endif -%}
+            </div>
+            {%- liquid
+      if section.settings.post_limit <= section.settings.blog.articles_count
+        assign posts_exceed_limit = true
+      endif
+    -%}
+            {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+            <ul
+                class="blog__posts_limits_00 max-width-1000 multiple_blogs {% if posts_exceed_limit %} blog__posts--{{ section.settings.post_limit }}-items{% else %} blog__posts--{{ section.settings.blog.articles_count }}-items{% endif %}"
+                role="list"
+                >
+              {%- for article in section.settings.blog.articles limit: section.settings.post_limit -%}
+              {% if forloop.index == 1 %}
+
+              {% else %}
+              <li class="padding_bot_dd">
+                <article class="{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+                  <a href="{{ article.url }}" class="link_flexy_00">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-4 col-sm-12">
+                        {%- if show_image == true or article.image -%}
+                        <div class="motion-reduce width_100di" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+
+                        </div>
+                        {%- endif -%}                    
+                      </div>
+                      <div class="col-lg-8 col-md-8 col-sm-12">
+                        <div>
+                          {%- for block in section.blocks -%}
+                          {%- case block.type -%}
+                          {%- when 'title'-%}
+                          <header>
+                            <h2 class="fnt_set" id="Article-{{ article.id }}">
+                              {{ article.title | escape }}
+                            </h2>
+                            <div class="opac_5">
+                              <span class="caption-with-letter-spacing">{{ article.excerpt | truncate: 50 }}</span>
+                              {%comment%}
+                              {%- if block.settings.show_author -%}
+                              <span class="caption-with-letter-spacing">{{ article.author -}} : </span>
+                              {%- endif -%}
+                              {%- if block.settings.show_date -%}
+                              <span>
+                                {{ article.published_at | date: "%B %-d, %Y"  }}
+                              </span>
+                              {%- endif -%}
+                              {%endcomment%}
+                            </div>
+                          </header>
+
+                          {%- endcase -%}
+                          {%- endfor -%}
+                        </div>
+                      </div>                    
+                    </div>
+                  </a>
+                </article>
+              </li>              
+              {% endif %}
+              {%- endfor -%}
+            </ul>
+
+            {%comment%}     
+
+            {% if section.settings.banner_show %}
+            <div class="banner_locations_drop">
+              <img src="{{ section.settings.banner_image | img_url:'master' }}">
+              <div class="banner_locations_drop_al">
+                <h1>{{ section.settings.banner_title }}</h1>
+                <p>{{ section.settings.banner_desc }}</p>
+                {% if section.settings.banner_text != blank %}
+                <div class="anchor_done__all"> <a href="{{ section.settings.banner_link }}">{{ section.settings.banner_text }}</a> </div>
+                {% endif %}
+                {% if section.settings.banner_locations %}
+                <div class="x_spread_bn">
+                  <button x-spread="button" type="button" class="eset_pp_pk bg-black text-white">
+                    <span class="">
+                      5th Avenue
+                    </span>
+                    <div x-spread="icon" class="eset_pp bg-white text-black">
+                      <svg class="h-3 w-3 stroke-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                  </button>
+                </div>
+                <div class="dropdown_x_ra_99">
+                  <div class="dropdown_x_ra">
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>5th Avenue</div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>Brooklyn</div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>Columbus Circle</div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>Dallas</div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>Hudson Yards</div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>Los Angeles</div>
+                        <svg  fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                    <div class="dropdown_x_ra_1">
+                      <a href="/locations/fifth-ave-nyc">
+                        <div>South Norwalk</div>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>                
+                {% endif %}
+              </div>
+            </div>            
+            {% endif %}
+
+
+            {%endcomment%}
+
+            {%- if section.settings.show_view_all and section.settings.post_limit < section.settings.blog.articles_count -%}
+            <div class="blog__view-all center small-hide medium-hide">
+              <a href="{{ section.settings.blog.url }}" class="blog__button button">
+                {{ 'sections.featured_blog.view_all' | t }}
+              </a>
+            </div>
+            {%- endif -%}
+            {%- else -%}
+            <div class="placeholder">
+              <h2>
+                {{ 'sections.featured_blog.onboarding_title' | t }}
+              </h2>
+              <p class="rte-width">
+                {{ 'sections.featured_blog.onboarding_content' | t }}
+              </p>
+            </div>
+            {%- endif -%}
+          </div>
+        </div>  
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+{% schema %}
+{
+"name": "Article Section",
+"tag": "section",
+"class": "spaced-section spaced-section--full-width",
+"settings": [
+{
+"type": "text",
+"id": "feature_heading",
+"default": "Featured Blog Post",
+"label": "Feaure post heading"
+},
+
+{
+"type": "text",
+"id": "heading",
+"default": "Blog posts",
+"label": "Desktop Sidebar Title"
+},
+{
+"type": "text",
+"id": "heading_mobile",
+"default": "Read More",
+"label": "Mobile Read More Title"
+},
+{
+"type": "blog",
+"id": "blog",
+"label": "t:sections.featured-blog.settings.blog.label"
+},
+{
+"type": "range",
+"id": "post_limit",
+"min": 1,
+"max": 6,
+"step": 1,
+"default": 3,
+"label": "t:sections.featured-blog.settings.post_limit.label"
+},
+{
+"type": "checkbox",
+"id": "show_view_all",
+"default": true,
+"label": "t:sections.featured-blog.settings.show_view_all.label"
+},
+{
+"type": "checkbox",
+"id": "show_image",
+"default": true,
+"label": "t:sections.featured-blog.settings.show_image.label",
+"info": "t:sections.featured-blog.settings.show_image.info"
+},
+{
+"type": "checkbox",
+"id": "soft_background",
+"default": false,
+"label": "t:sections.featured-blog.settings.soft_background.label"
+},
+
+
+{
+"type": "textarea",
+"id": "all_collection_text",
+"label": "Title"
+},
+{
+"type": "collection",
+"id": "all_collection",
+"label": "Select Collection"
+},
+{
+"type": "blog",
+"id": "blog_latest_articles",
+"label": "Select latest Blog"
+}
+],
+"blocks": [
+{
+"type": "title",
+"name": "t:sections.featured-blog.blocks.title.name",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_date",
+"default": true,
+"label": "t:sections.featured-blog.blocks.title.settings.show_date.label"
+},
+{
+"type": "checkbox",
+"id": "show_author",
+"default": false,
+"label": "t:sections.featured-blog.blocks.title.settings.show_author.label"
+}
+]
+},
+{
+"type": "blog",
+"name": "Add Blog",
+"settings": [
+{
+"type": "blog",
+"id": "selected_blog",
+"label": "Select Blog"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Articles Section",
+"settings": {
+"blog": "All"
+},
+"blocks": [
+{
+"type": "title"
+},
+{
+"type": "blog"
+}
+]
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+

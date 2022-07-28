@@ -1,0 +1,335 @@
+  /*   top=banner */
+  .back-top-txt {
+/*     width: 100%;
+    height: 65vh;
+    background-repeat: no-repeat;
+    background-size: cover; */
+  }
+  .banner-txt-color {
+    text-align: center;
+  }
+  .back-top-txt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .banner-txt-center {
+    font-size: 34px;
+    color: #FBED1C;
+    font-family: sans-serif !important;
+  }
+  /*   top=banner */
+  .my-container {
+    background: #ffff;
+    padding-left: 20px;
+    padding-right: 20px;
+/*     width: 70%; */
+    margin: auto;
+    padding-bottom: 3%;
+    padding-top: 2%;
+  }
+  .my-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: auto;
+    column-gap: 1.5%;
+  }
+  img.person-img {
+    width: 90%;
+  }
+  .image-container {
+    display: flex;
+    justify-content: center;
+  }
+  .my-btn-meet {
+    width: 100%;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 7px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 6px 0px #000;
+    border: 0px;
+  }
+  .text-btn {
+    box-shadow: inset rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    background: #fff;
+    border-radius: 25px;
+    padding: 15px;
+  }
+  .text-container {
+    padding: 5px;
+  }
+  .inner-div {
+
+    padding: 20px 10px;
+    border-radius: 25px;
+  }
+  h1.person-name {
+    font-size: 32px;
+    color: #9F238F;
+  }
+  p.text-description {
+    font-size: 22px;
+    color: #818285;
+    font-weight: 900;
+  }
+  .btn-container {
+    margin-top: 25px;
+  }
+  img.my-btn-meet-2 {
+    font-size: 24px;
+    padding: 15px 20px;
+    color: #fff;
+    width: 100%;
+/*     border-radius: 20px; */
+    border: none;
+  }
+  .my-btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5%;
+    margin-top: 2%;
+  }
+  @media screen and (min-width: 1600px) {
+    .my-container {
+/*       width: 50%; */
+    }
+  }
+  @media screen and (max-width: 1200px) and (min-width: 500px) {
+    .my-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .First-person {
+      padding-bottom: 10%;
+    }
+    p.banner-txt-center {
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width: 650px) {
+    .my-container {
+/*       width: 80%; */
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .my-row {
+      grid-template-columns: 1fr;
+      grid-gap: 2.5%;
+      display:block;
+    }
+    .my-btn-container {
+      margin-top: 50px;
+      grid-template-columns: 1fr;      
+    }
+    button.my-btn-meet-2 {
+      font-size: 14px;
+    }
+  }
+/*   .my-btn-container button {
+    background-repeat:no-repeat;
+    background-color: transparent; 
+  } */
+  
+  .bottom-white-space {
+    background: #fff;
+    height: 100px;
+    padding: 4rem 0rem 13rem 0rem;
+    margin: auto auto -13rem auto;
+  }
+  .page-width-bottom-white-space {
+  max-width: 1400px;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width-bottom-white-space{
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 1199px) {
+.page-width-bottom-white-space {
+    width: 90%;
+}
+}
+  .bottom-image-hero {
+   display: block !important; 
+  }
+
+/*  new popup code */
+
+@charset "UTF-8";
+
+/*==============================================================================
+ ___  _   _    _
+/   || | | |  | |
+\__  | | | |  | |  __
+/    |/  |/_) |/  /  \_/\/
+\___/|__/| \_/|__/\__/  /\_/
+              |\
+              |/
+Focus v1.5
+https://github.com/Elkfox/Focus
+Copyright (c) 2018 Elkfox Co Pty Ltd
+https://elkfox.com
+Project lead: George Butter
+MIT License
+==============================================================================*/
+
+.popup {
+  position: fixed;
+  z-index: 9996;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.popup.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.popup .popup-content {
+  display: inline-block;
+  z-index: 9999;
+  max-width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  padding: 50px;
+  background-color: #fff;
+  cursor: default;
+  color: #000;
+}
+.popup.overlay {
+  position: absolute;
+  top: auto;
+  left: 0;
+  right: 0;
+/*   bottom: 0; */
+  margin: auto;
+/*   width: 100%; */
+/* min-height: 50%; */
+display: flex;
+  /* transform: translateY(42%); */
+}
+.popup.overlay .popup-outside {
+  position: absolute;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.popup.overlay .popup-inner {
+  -webkit-backface-visibility: hidden;
+  cursor: pointer;
+  z-index: 9997;
+  text-align: initial;
+/*   position: absolute; */
+  top: 25%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 300px;
+  -webkit-transform: translateY(25px);
+  -moz-transform: translateY(25px);
+  -ms-transform: translateY(25px);
+  transform: translateY(25px);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  padding: 10px 10px 20px;
+border-radius: 20px;
+}
+.wbg-member-popup {
+  padding: 20px;
+  border-radius: 20px;
+  background: #fff;
+  height:100%;
+}
+.popup.overlay .popup-inner .popup-content {
+  position: relative;
+}
+.popup.overlay.visible .popup-inner {
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+.popup .popup-close {
+display: block;
+position: absolute;
+top: -10px;
+right: 25px;
+width: 30px;
+height: 30px;
+border-radius: 50%;
+}
+
+.wbg-popup-row.row {
+  justify-content: space-between;
+}
+.wbg-popup-descp{
+  font-size: 14px;
+}
+.wbg-mem-name {
+  font-size: 40px;
+}
+.wbg-mem-designation {
+  font-size: 24px;
+}
+.wbg-title.wbg-hobbies-title {
+}
+.wbg-title {
+  font-size: 25px;
+}
+
+
+
+.cross-hairlines {
+  height: 3px;
+  width: 20px;
+  background: #fff;
+  transform: rotate(45deg) translate(13px,6px);
+  display: block;
+  -ms-transform: rotate(45deg) translate(13px,6px);
+}
+.cross-hairlines:nth-child(2) {
+  transform: rotate(135deg) translate(4px,-11px);
+  -ms-transform: rotate(135deg) translate(4px,-11px);
+}
+
+
+.person-fingers{
+  position: absolute;
+  display: none;
+  bottom: 0;
+  transform: translateY(82%);
+  z-index: 9999;
+  width:70%;
+  text-align:center;
+}
+.person-fingers img{
+	width:100%;
+}
+@media screen and (min-width:1201px){
+.First-person:nth-child(4n) .popup.overlay .popup-close {
+    right: 8px;
+}
+}
+@media screen and (max-width: 500px){
+  .popup .popup-close{
+ 	right: -10px;
+  }
+
+}

@@ -1,0 +1,130 @@
+<style type="text/css">
+  .template-404 .title + * {
+    margin-top: 1rem;
+  }
+
+  @media screen and (min-width: 750px) {
+    .template-404 .title + * {
+      margin-top: 2rem;
+    }
+  }
+  @media screen and (min-width: 992px) and (max-width: 1499px) {
+  .no-banner-top-space{
+    padding-top: 11rem;
+    }
+  }  
+  @media screen and (min-width: 1500px) {
+  .no-banner-top-space{
+    padding-top: 13rem;
+    }
+  } 
+  .title {
+   font-size: 25px; 
+  }
+  .template-404 button {
+    max-width: 450px;
+    color: #777154;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 1rem 3rem;
+    border-radius: 30px;
+    box-shadow: 2px 2px 6px 0px #000;
+    border: 0px;
+    background-image: linear-gradient(#ecff00, #f5cc00); 
+  }
+  .template-404 a {
+   text-decoration: none; 
+  }
+  .template-404 {
+   background-color: white; 
+  }
+  .template-404-inner {
+    max-width: 750px;
+    margin: auto;
+  }
+    .bottom-white-space {
+    background: #fff;
+    height: 100px;
+    padding: 4rem 0rem 13rem 0rem;
+    margin: auto auto -13rem auto;
+  }
+  .page-width-bottom-white-space {
+  max-width: 1400px;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width-bottom-white-space{
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 1199px) {
+.page-width-bottom-white-space {
+    width: 90%;
+}
+}
+/*   
+    .page-width-hero-page {
+  max-width: 1400px;
+  padding: 0 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width-hero-page{
+    padding: 0 5rem;
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 1199px) {
+.page-width-hero-page {
+    width: 90%;
+  padding: 0 9rem;
+}
+} */
+@media screen and (max-width: 900px) {
+.page-width-hero-page img {
+   padding-top: 5rem !important;
+}
+}  
+  .page-width-hero-page img {
+    max-width: 100%;
+    margin: auto;
+  }
+</style>
+
+<div class="template-404 page-width center no-banner-top-space page-width">
+  <div class="template-404-inner">
+  <div class="page-width-hero-page">
+  <img src="{{ section.settings.error-img | img_url : 'master' }}" />
+  </div>
+  <h1 class="title">
+    {{ 'templates.404.subtext' | t }}
+
+    {{ 'templates.404.title' | t }}
+  </h1>
+  <button class="raise"><a href="{{ routes.all_products_collection_url }}" class="link">
+    Click here to continue shopping
+  </a>
+  </button>
+  </div>
+</div>
+<center>
+  <div class="bottom-white-space page-width-bottom-white-space">
+  <span></span>
+  </div>
+</center>
+
+{% schema %}
+
+{
+"name": "404 Page Banner",
+"settings": [
+{
+"id" : "error-img",
+"type" : "image_picker",
+"label" : "Image"
+}
+]
+}
+{% endschema %}

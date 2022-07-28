@@ -1,0 +1,41 @@
+<section class="top-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="download-text-data">
+          <h1>{{ section.settings.text }}</h1>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="download-image-data">
+          <img src="{{ section.settings.image | img_url:'master' }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Banner Rich Text",
+    "settings": [
+        {
+			"id":"text",
+			"type":"textarea",
+			"label":"Text"
+        },
+        {
+			"id":"image",
+			"type":"image_picker",
+			"label":"Image"
+        }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

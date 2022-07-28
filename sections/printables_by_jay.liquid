@@ -1,0 +1,317 @@
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<style>
+
+  #divLargerImage
+  {
+    display: none;
+    position: fixed;
+/*     top: 30vh; */
+    top: 25%;
+    left: 0;
+/*     transform: translate(calc(50vw - 50.5%)); */
+    z-index: 99;
+    margin: auto;
+    width: 100%;
+  }
+
+  #divOverlay
+  { 
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #CCC;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    z-index: 98;
+    cursor: zoom-out;
+  }
+
+  div#divLargerImage>img {
+    width: 800px;
+/*     height: 90%; */
+    min-width: 450px;
+    max-width: 80%;
+    display: block;
+    margin: auto;
+  }
+  @media screen and (max-width: 600px) {
+    div#divLargerImage>img {
+      height: 100% !important;
+      min-width: 280px;
+      min-height: 100%;
+    }
+  }
+  /*   load-more-css */
+  /*   .fc-item {
+  display:none;
+  } */
+  .load-more-button-container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  button.load-more {
+    background: linear-gradient( 160deg,#ff706b,#ff3c47);
+    padding: 10px 5px;
+    border: none;
+    color: white;
+    border-radius: 24px;
+    min-width: 320px;
+    font-size: 16px;
+  }
+  @media screen and  (max-width: 450px) {
+    button.load-more {
+      min-width: 260px;
+    }  
+  }
+  /*   filer-button */
+  details.disclosure-has-popup.facets__disclosure.js-filter {
+    width: 180px;
+    border-radius: 25px;
+  }
+  .filters {
+    margin-bottom: 20px;
+  }
+  p.text-filter-by {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+  .facets__display {
+    width: 25rem;
+  }
+</style>
+<div class="custom-field custom-field__prints custom-field__type--field-collection-json">
+  <div class="filters">
+    <div class="filter-by-txt">
+      <p class="text-filter-by">Filter By</p>
+    </div>
+    <!--   //// -->
+    <!--     <div class="clearfix filter"> 
+<select class="form">
+<option class="tags_filteration" value="Creative Kids">Creative Kids</option>
+<option class="tags_filteration" value="Kiddy Dough">Kiddy Dough</option>
+<option class="tags_filteration" value="Sense and Grow">Sense and Grow</option>
+</select>
+</div> -->
+    <details class="disclosure-has-popup facets__disclosure js-filter" style="margin-left: 0;" data-index="2">
+      <summary class="facets__summary">
+        <div>
+          <span>Categories</span>
+          <span class="count-bubble"></span>
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-caret" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+            </path></svg>
+
+        </div>
+      </summary>
+      <div class="facets__display">
+        <div class="facets__header">
+          <div class="checked-boxes-no">
+            <span class="checked-number-boxes">0</span>
+            <span class="facets__selected">selected</span>
+          </div>
+          <a href="{{ page.url }}" class="facets__reset link underlined-link js-facet-remove">Reset</a>
+        </div>
+
+        <ul class="facets__list list-unstyled" role="list"><li class="list-menu__item facets__item">
+          <label for="Creative-Kids" class="facet-checkbox tags_filteration" data-tag="Creative Kids" >
+            <input type="checkbox" class="filter" value="Creative Kids" id="Creative-Kids">
+
+            <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <rect x=".5" y=".5" width="14" height="14" stroke="currentColor" fill="none" stroke-width="1" rx="8"></rect>
+            </svg>
+
+            <svg class="icon icon-checkmark" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 9" fill="none" width="10px" height="10px">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="currentColor"></path>
+            </svg>
+            Creative Kids
+          </label>
+          </li><li class="list-menu__item facets__item">
+          <label for="Kiddy-Dough" class="facet-checkbox tags_filteration" data-tag="Kiddy Dough">
+            <input type="checkbox" class="filter" value="Kiddy Dough" id="Kiddy-Dough">
+
+            <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <rect x=".5" y=".5" width="14" height="14" stroke="currentColor" fill="none" stroke-width="1" rx="8"></rect>
+            </svg>
+
+            <svg class="icon icon-checkmark" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 9" fill="none" width="10px" height="10px">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="currentColor"></path>
+            </svg>
+            Kiddy Dough
+          </label>
+          </li>
+          <li class="list-menu__item facets__item">
+            <label for="Sense-and-Grow" class="facet-checkbox tags_filteration" data-tag="Sense and Grow">
+              <input type="checkbox" class="filter" value="Sense and Grow" id="Sense-and-Grow">
+
+            <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <rect x=".5" y=".5" width="14" height="14" stroke="currentColor" fill="none" stroke-width="1" rx="8"></rect>
+            </svg>
+
+              <svg class="icon icon-checkmark" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 9" fill="none" width="10px" height="10px">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.35.643a.5.5 0 01.006.707l-6.77 6.886a.5.5 0 01-.719-.006L.638 4.845a.5.5 0 11.724-.69l2.872 3.011 6.41-6.517a.5.5 0 01.707-.006h-.001z" fill="currentColor"></path>
+              </svg>
+              Sense and Grow
+            </label>
+          </li>
+        </ul>
+      </div>
+    </details>
+    <!--   //// -->
+  </div>
+  <!--   <button class="tags_filteration">Creative Kids</button>
+<button class="tags_filteration">Kiddy Dough</button>
+<button class="tags_filteration">Sense and Grow</button> -->
+  {% if shop.metafields.custom_fields["prints"] != blank %}
+  <!--         <h3 class="custom-field--title">Printables</h3> -->
+  <div class="custom-field--value-grid">
+    {% for item in shop.metafields.custom_fields["prints"] %}
+    <div class="fc-item fc-index--{{ forloop.index0 }}" data-custom-type="{{ item["tags"] }}">
+      {% comment %}              
+
+      {% if item["title"] != blank %}
+      <div class="fc-field field__title field-type--text-repeater">
+        <!--                <h4 class="custom-field--title">Title</h4> -->
+        <div class="custom-field--value">
+          {% for repeater_item in item["title"] %}
+          <div class="repeater-item repeater-item--text">
+            {{ repeater_item["title"] }}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {% endcomment %}              
+
+      {% if item["image"] != blank %}
+      <div class="fc-field field__image field-type--image-repeater">
+        <!--                <h4 class="custom-field--title">image</h4> -->
+        <div class="custom-field--value">
+          {% for repeater_item in item["image"] %}
+          <div class="repeater-item repeater-item--image bg-image-jay gallery">
+            <div class="sub">
+              <a class="my-anchor-pop-up">
+                
+
+                <!-- Save the image tag as a variable that returns the url -->
+				{% render 'cf-image' with image: repeater_item["image"], size: "800x800",format: 'pjpg' %}
+              
+              </a>
+            </div>
+          </div>
+          {% endfor %}
+          {% if item["zip"] != blank %}
+          <div class="fc-field field__zip field-type--file-repeater">
+            <!--                <h4 class="custom-field--title">Zip</h4> -->
+            <div class="custom-field--value">
+              {% for repeater_item in item["zip"] %}
+              <div class="repeater-item repeater-item--file">
+                <a href="{{ repeater_item["zip"] }}" download="{{ repeater_item["title"] }}">Download & Print</a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %} 
+        </div>
+      </div>
+      {% endif %}
+      {% comment %}
+      {% if item["tags"] != blank %}
+      <div class="fc-field field__tags field-type--text-list">
+        <!--                <h4 class="custom-field--title">tags</h4> -->
+        <div class="custom-field--value">
+          {{ item["tags"] }}
+        </div>
+      </div>
+      {% endif %}
+      {% endcomment %}
+    </div>
+    {% endfor %}
+  </div>
+  <!--   <div class="load-more-button-container">
+<button class="load-more">Load More</button>
+</div> -->
+</div>
+{% endif %}
+
+<div id="divLargerImage"></div>
+
+<div id="divOverlay"></div>
+<script src="/js/stringify.js?5f69985191e1fe94c3627a921be5fddfbe000dcb" charset="utf-8"></script>
+<script>
+
+  $('.tags_filteration').click(function () {
+
+    $('input.filter').each(function () {
+      var check_tag = $('.filter:checkbox:checked');
+      if(check_tag.length > 0){
+        $(".fc-item").hide();
+      }else{
+        $(".fc-item").show();
+      }
+    });
+    $('input.filter:checkbox:checked').each(function () {
+      var check_tag = $(this).val();
+      $(".fc-item[data-custom-type*='"+ check_tag+ "'] ").show();
+    });
+  });
+
+  $('input.filter').on('change', function(){
+    var number = $('.filter:checkbox:checked').length;
+    $('.checked-number-boxes').text(number);
+  });
+
+  $('.main').click(function() {
+    var $el = $(this);
+    $('.sub').slideUp("slow");
+    $('.arrow').html("&#9654;");
+
+    $el.next('.sub').slideDown("slow");
+    $('.arrow', $el).html("&#9660;");
+  });
+
+  $('.my-anchor-pop-up>img').click(function () {
+    var $img = $(this);
+    $('#divLargerImage').html($img.clone()).add($('#divOverlay')).fadeIn();
+  });
+
+  $('#divLargerImage').add($('#divOverlay')).click(function () {
+    $('#divLargerImage').add($('#divOverlay')).fadeOut(function () {
+      $('#divLargerImage').empty();
+    });
+  });
+  //   load-more-button
+  //   $(function () {
+  //     $(".fc-item").slice(0, 8).show();
+  //     $("body").on('click touchstart', '.load-more', function (e) {
+  //       e.preventDefault(); 
+  //       $(".fc-item:hidden").slice(0, 8).slideDown();
+  //       if ($(".fc-item:hidden").length == 0) {
+  //         $(".load-more").text('No More');
+  //       }
+  //     });
+  //   });
+  //   load-more-button
+  //   for-filtering
+  //   $('.coll-filter').change(function() {
+  //     var filter = $(this).val();
+  //     filterList(filter);
+  //   });  
+  //   function filterList(value) {
+  //     var list = $(".coll-filter");
+  //     $(list).hide();  
+  //     if (value == "All") {
+  //       $(".custom-field--value-grid").find("div").each(function (i) {
+  //         $(this).show();
+  //       });
+  //     } else {
+  //       $(".custom-field--value-grid").find("div[data-custom-type*=" + value + "]").each(function (i) {
+  //         $(this).show();
+  //       });
+  //     }
+  //   }
+</script>

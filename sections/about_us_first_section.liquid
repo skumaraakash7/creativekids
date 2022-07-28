@@ -1,0 +1,56 @@
+<div class="about_us_section">
+  <div class="hero-image" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ section.settings.bg_img | img_url:'master' }});">
+    <div class="hero-text">
+      <h1>{{ section.settings.main_title }}</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="text mar_4">
+      <h1>{{ section.settings.title }}</h1>
+      <h3>{{ section.settings.description }}</h3>
+      <div class="image_wb_tp">
+        <img class="image_wb" src="{{ section.settings.img_1 | img_url:'master' }}">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "settings": [
+      {
+        "id": "bg_img",
+        "type": "image_picker",
+        "label": "Background Image"
+      },
+      {
+        "id": "main_title",
+        "type": "text",
+        "label": "Main Title"
+      },
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "description",
+        "type": "textarea",
+        "label": "Description"
+      },
+      {
+        "id": "img_1",
+        "type": "image_picker",
+        "label": "Image"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

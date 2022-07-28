@@ -1,0 +1,103 @@
+<style>
+
+  /*section-ring*/
+  .row.row-3P{
+    display:content !important;
+  } 
+  .ring-img img {
+    max-width: 100%;
+    max-height: 100px;
+  }
+  .item-center{
+    text-align: center;
+  }
+  .row-3{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ring-row1 h3 {
+    font-size: xx-large;
+    color:#000;
+  }
+  .ring-row-3{
+    margin-top: 50px;
+  }
+.png-row-custom {
+    max-width: 800px;
+    margin: auto;
+      padding: 20px 10px;
+
+    @media screen and (min-width:900px) {
+      padding: 20px 50px;
+
+    }
+  }
+  .custom-png-section {
+   margin-top: -10px; 
+  }
+
+</style>
+<div class="custom-png-section" >
+
+  <div class="hero-back-color page-width" style="background-color: {{section.settings.bkg-color}}; position:relative;">
+    <!--     <div class="row">
+<div class="ring-row1 float-r-l">
+<h1>{{ section.settings.title | escape }}</h1>
+</div>
+</div>         -->
+    <div class="png-row-custom">
+      <div class="row row-3">
+        {% for block in section.blocks %}
+        <div class="col ring-img item-center" >
+          <a href="{{ section.settings.url }}">
+            <img src="{{ block.settings.product-image | img_url: 'master' }}">
+          </a>        
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>
+{% schema %}
+{
+"name": "Featured Product PNGs",
+"settings": [
+{
+"type"    : "color",
+"id"      : "bkg-color",
+"default" : "#fff",
+"label"   : "Background Color"
+}
+],
+
+"blocks": [
+{
+"type": "select",
+"name": "Add image",
+"settings": [
+{
+"id": "product-image",
+"type": "image_picker",
+"label": "Image picker"
+},
+{
+"type": "paragraph",
+"content": "Suggested image size: 220px wide by 150px height"
+},
+{
+"id": "url",
+"type": "url",
+"label": "Optional Image Link"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Featured Product PNGs",
+"category": "ring-image"
+}
+]
+}
+{% endschema %}

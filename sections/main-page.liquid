@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="  {% unless page.handle == 'our-retail-partners' or 'our-philosophy' %}no-banner-top-space{% endunless%}">
+
+<div class="page-width" style="margin: auto; background-color: white;">
+    
+  {% unless page.handle == 'our-retail-partners' or 'our-philosophy' %}
+
+  <h1 class="main-page-title page-title h0">
+    {{ page.title | escape }}
+  </h1>
+   {% endunless %}
+   
+  <div class="rte page-width">
+    {{ page.content }}
+  </div>
+</div>
+
+  {% unless page.handle == 'our-retail-partners' or 'our-philosophy' %}
+<center>
+  <div class="bottom-white-space page-width-bottom-white-space">
+  <span></span>
+  </div>
+</center>
+  {% endunless %}
+</div>
+<style>
+  p {
+   font-size: 1.4rem; 
+  }
+  .main-page-title {
+    margin-bottom: 0;
+  }
+  .bottom-white-space {
+    background: #fff;
+    height: 100px;
+    padding: 4rem 0rem 13rem 0rem;
+    margin: auto auto -13rem auto;
+  }
+  .page-width-bottom-white-space {
+  max-width: 1400px;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width-bottom-white-space{
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 1199px) {
+.page-width-bottom-white-space {
+    width: 90%;
+}
+}
+  
+@media screen and (max-width: 767px) {
+ .swiper-slide-no-image {
+    margin-bottom: 3rem;
+  }
+}  
+@media screen and (min-width: 768px) and (max-width: 990px) {
+ .swiper-slide-no-image {
+    margin-bottom: 7rem;
+  }
+}
+@media screen and (min-width: 991px) {
+ .swiper-slide-no-image {
+    margin-bottom: 12rem;
+  }
+}     
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "settings": [
+  ]
+}
+{% endschema %}

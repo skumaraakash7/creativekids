@@ -1,0 +1,563 @@
+<style>
+  .bg-image{
+    background: url({{ 'product_image_0_fjords.jpg' | asset_url }});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  .bg-image:hover{
+    background: rgba(46, 68, 51, 0.72) url({{ 'product_image_0_fjords.jpg' | asset_url }});
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
+<section class="nav-tab-section">
+  <div class="container">
+    <div class="row">  
+      <div class="col-md-12">
+
+        <ul class="nav nav-pills mb-3 pills-tab_kk" id="pills-tab" role="tablist">
+
+          {%- for block in section.blocks -%}
+          {%- case block.type -%}
+          {%- when 'Filters' -%}
+          <li class="nav-item" role="presentation">	
+            <button class="nav-link" id="pills-{{ block.settings.tab_name | replace: " ", "_" | downcase }}-tab" data-bs-toggle="pill"
+                    data-bs-target="#pills-{{ block.settings.tab_name | replace: " ", "_" | downcase }}" type="button" role="tab" aria-controls="pills-{{ block.settings.tab_name | replace: " ", "_" | downcase }}"
+                    aria-selected="false">
+              {{ block.settings.tab_name }}
+            </button>
+          </li>
+          {%- endcase -%}
+          {%- endfor -%}
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+
+          {%- for block in section.blocks -%}
+          {%- case block.type -%}
+          {%- when 'Filters' -%}
+          <div class="tab-pane fade show" id="pills-{{ block.settings.tab_name | replace: " ", "_" | downcase }}" role="tabpanel" aria-labelledby="pills-{{ block.settings.tab_name | replace: " ", "_" | downcase }}-tab">	
+            <section class="modal-section">
+              <div class="container">
+                <div class="row">
+
+                  {% if block.settings.modal_bg_img != blank %}                  
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.modal_bg_img_2 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_2 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_2 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_2 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.modal_bg_img_3 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_3 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_3 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_3 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.modal_bg_img_4 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_4 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_4 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_4 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.modal_bg_img_5 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_5 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_5 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_5 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.modal_bg_img_6 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_6 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_6 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_6 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %} 
+
+                  {% if block.settings.modal_bg_img_7 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_7 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_7 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_7 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+
+                  {% if block.settings.modal_bg_img_8 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_8 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_8 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_8 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                  {% if block.settings.modal_bg_img_9 != blank %}
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="background-image:url({{ block.settings.modal_bg_img_9 | img_url:'master' }})">
+                      <div class="downoad_pz">
+                        <div data-ts-image="{{ block.settings.file_path_9 }}" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle_{{ block.id }}"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle_{{ block.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ block.settings.modal_bg_img_9 | img_url:'master' }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endif %}
+
+                </div>
+              </div>
+            </section>
+          </div>
+
+          {%- endcase -%}
+          {%- endfor -%}
+
+          {% comment %}      
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+            <section class="modal-section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="">
+                      <div class="downoad_pz">
+                        <div data-ts-image="//cdn.shopify.com/s/files/1/0403/9376/9117/files/del_rio_trade_and_media_kit.zip?v=9188149978160774333" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle1"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ 'product_image_0_fjords.jpg' | asset_url }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="">
+                      <div class="downoad_pz">
+                        <div data-ts-image="//cdn.shopify.com/s/files/1/0403/9376/9117/files/del_rio_trade_and_media_kit.zip?v=9188149978160774333" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle2"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ 'product_image_0_fjords.jpg' | asset_url }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>          
+
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+
+            <section class="modal-section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="">
+                      <div class="downoad_pz">
+                        <div data-ts-image="//cdn.shopify.com/s/files/1/0403/9376/9117/files/del_rio_trade_and_media_kit.zip?v=9188149978160774333" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle3"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle3" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ 'product_image_0_fjords.jpg' | asset_url }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="">
+                      <div class="downoad_pz">
+                        <div data-ts-image="//cdn.shopify.com/s/files/1/0403/9376/9117/files/del_rio_trade_and_media_kit.zip?v=9188149978160774333" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle4"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle4" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ 'product_image_0_fjords.jpg' | asset_url }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="bg-image imge imge_ht_0" style="">
+                      <div class="downoad_pz">
+                        <div data-ts-image="//cdn.shopify.com/s/files/1/0403/9376/9117/files/del_rio_trade_and_media_kit.zip?v=9188149978160774333" class="download-tag download_bg_image_js1">
+                          <i class="fa fa-download"></i>
+                        </div>
+                        <div class="eye-tag">		
+                          <i class="fa fa-eye"  data-bs-toggle="modal" href="#exampleModalToggle5"></i>
+                        </div>
+                      </div>
+                      <div class="modal fade" id="exampleModalToggle5" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-body">
+                              <img src="{{ 'product_image_0_fjords.jpg' | asset_url }}" alt="">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>          
+
+
+          </div>
+          {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="{{ 'js-file-downloader.js' | asset_url }}"></script>
+
+<script>
+  $( ".download_bg_image_js1" ).click(function() {        
+    var imageForDownload = $(this).data("ts-image");
+    new jsFileDownloader({ url: imageForDownload });      
+  });  
+</script>
+
+{% schema %}
+{
+"name": "Printables Filtration",
+"tag": "section",
+"class": "Printables_Filtration",
+"blocks": [
+{
+"type": "Filters",
+"name": "Filters",
+"settings": [
+{
+"type": "text",
+"id": "tab_name",
+"label": "Add Filter Name"
+},
+{
+"type": "header",
+"content": "Filter 1 Content"
+},
+{
+"type": "textarea",
+"id": "file_path",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 2 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_2",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_2",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 3 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_3",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_3",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 4 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_4",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_4",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 5 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_5",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_5",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 6 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_6",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_6",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 7 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_7",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_7",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 8 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_8",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_8",
+"type": "image_picker",
+"label": "Add Background Image"
+},
+{
+"type": "header",
+"content": "Filter 9 Content"
+},
+{
+"type": "textarea",
+"id": "file_path_9",
+"label": "Add File path"
+},
+{
+"id": "modal_bg_img_9",
+"type": "image_picker",
+"label": "Add Background Image"
+}
+]
+}
+],
+"settings": []
+}
+{% endschema %}

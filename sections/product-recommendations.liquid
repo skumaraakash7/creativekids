@@ -1,0 +1,243 @@
+<link rel="stylesheet" href="{{ 'component-badge.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-product-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-badge.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}</noscript>
+<style>
+  .my-grid-item {
+    border-radius: 24px;
+  }
+  .child-class>.my-grid-item:nth-child(1) {
+    background: linear-gradient(160deg,#5aa1d4,#2f87c3);
+    padding: 12px 15px 25px !important;
+  }
+  .child-class>.my-grid-item:nth-child(2) {
+    background: linear-gradient(160deg,#8ce18f,#63c771);
+    padding: 25px 15px 12px !important;
+  }
+  .child-class>.my-grid-item:nth-child(3) {
+    background: linear-gradient(160deg,#f8f484,#dce35a);
+    padding: 12px 15px 25px !important;
+  }
+  .child-class>.my-grid-item:nth-child(4) {
+    background: linear-gradient(160deg,#ff706b,#ff3c47);
+    padding: 25px 15px 12px !important;
+  }
+  .card-wrapper.my-card-wrapper {
+    background: #fff;
+    border-radius: 24px;
+    padding: 10px 20px;
+  }
+  .my-card-radius {
+    border-radius: 20px;
+  }
+  .my-grid-product-recommendation {
+    margin-left: 0 !important;
+  }
+  product-recommendations.product-recommendations.page-width-2.page-width {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  ul.grid.my-grid-product-recommendation.grid--2-col.child-class.grid--3-col-tablet.grid--4-col-desktop.grid--quarter-max {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  li.grid__item.my-grid-item {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .title-product-recomm {
+    text-align: left;
+    color: #b21583;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-bottom: 15px;
+    font-weight: 900;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-left: 10px;
+  }
+  .my-flex-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .find-out-recommended {
+    margin-top: 20px;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 24px;
+    width: 100%;
+    box-shadow: 3px 3px 8px 4px rgb(0 0 0 / 30%);
+    padding: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .child-class>.my-grid-item:nth-child(1) .card-information a.find-out-recommended {
+    background: linear-gradient(160deg,#5aa1d4,#2f87c3);
+  }
+  .child-class>.my-grid-item:nth-child(2) .card-information a.find-out-recommended {
+    background: linear-gradient(160deg,#8ce18f,#63c771);
+  }
+  .child-class>.my-grid-item:nth-child(3) .card-information a.find-out-recommended {
+    background: linear-gradient(160deg,#f8f484,#dce35a);
+  }
+  .child-class>.my-grid-item:nth-child(4) .card-information a.find-out-recommended {
+    background: linear-gradient(160deg,#ff706b,#ff3c47);
+  }
+  .child-class>.my-grid-item:nth-child(1) .card-wrapper.my-card-wrapper {
+    padding-top: 23px;
+  }
+  .child-class>.my-grid-item:nth-child(2) .card-wrapper.my-card-wrapper {
+    padding-bottom: 23px;
+  }
+  .child-class>.my-grid-item:nth-child(3) .card-wrapper.my-card-wrapper {
+    padding-top: 23px;
+  }
+  .child-class>.my-grid-item:nth-child(4) .card-wrapper.my-card-wrapper {
+    padding-bottom: 23px;
+  }
+  @media screen and (max-width: 1300px) and (min-width: 860px) {
+    ul.grid.my-grid-product-recommendation.grid--2-col.child-class.grid--3-col-tablet.grid--4-col-desktop.grid--quarter-max {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .child-class>.my-grid-item:nth-child(4) {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 860px) and (min-width: 600px) {
+    ul.grid.my-grid-product-recommendation.grid--2-col.child-class.grid--3-col-tablet.grid--4-col-desktop.grid--quarter-max {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    ul.grid.my-grid-product-recommendation.grid--2-col.child-class.grid--3-col-tablet.grid--4-col-desktop.grid--quarter-max {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+<product-recommendations class="product-recommendations page-width-2  page-width" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4">
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+  <h2 class="product-recommendations__heading">{{ section.settings.heading | escape }}</h2>
+  <ul class="grid  my-grid-product-recommendation grid--2-col child-class grid--3-col-tablet{% if recommendations.products_count > 3 %} grid--4-col-desktop grid--quarter-max{% endif %}" role="list">
+    {% for recommendation in recommendations.products %}
+
+    <li style="" class="grid__item my-grid-item">
+      {% render 'product-card-2',  
+            product_card_product: recommendation,
+      media_size: section.settings.image_ratio,
+      show_secondary_image: section.settings.show_secondary_image,
+      add_image_padding: section.settings.add_image_padding,
+      show_vendor: section.settings.show_vendor
+      %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</product-recommendations>
+{% javascript %}
+class ProductRecommendations extends HTMLElement {
+constructor() {
+super();
+
+const handleIntersection = (entries, observer) => {
+if (!entries[0].isIntersecting) return;
+observer.unobserve(this);
+
+fetch(this.dataset.url)
+.then(response => response.text())
+.then(text => {
+const html = document.createElement('div');
+html.innerHTML = text;
+const recommendations = html.querySelector('product-recommendations');
+if (recommendations && recommendations.innerHTML.trim().length) {
+this.innerHTML = recommendations.innerHTML;
+}
+})
+.catch(e => {
+console.error(e);
+});
+}
+
+new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+}
+}
+
+customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+{% schema %}
+{
+"name": "t:sections.product-recommendations.name",
+"tag": "section",
+"class": "spaced-section",
+"settings": [
+{
+"type": "paragraph",
+"content": "t:sections.product-recommendations.settings.paragraph__1.content"
+},
+{
+"type": "color",
+"id": "choose-color-1",
+"label": "Background color",
+"default": "#ffffff"
+},
+{
+"type": "text",
+"id": "heading",
+"default": "You may also like",
+"label": "t:sections.product-recommendations.settings.heading.label"
+},
+{
+"type": "header",
+"content": "t:sections.product-recommendations.settings.header__2.content"
+},
+{
+"type": "select",
+"id": "image_ratio",
+"options": [
+{
+"value": "adapt",
+"label": "t:sections.product-recommendations.settings.image_ratio.options__1.label"
+},
+{
+"value": "portrait",
+"label": "t:sections.product-recommendations.settings.image_ratio.options__2.label"
+},
+{
+"value": "square",
+"label": "t:sections.product-recommendations.settings.image_ratio.options__3.label"
+}
+],
+"default": "adapt",
+"label": "t:sections.product-recommendations.settings.image_ratio.label"
+},
+{
+"type": "checkbox",
+"id": "show_secondary_image",
+"default": false,
+"label": "t:sections.product-recommendations.settings.show_secondary_image.label"
+},
+{
+"type": "checkbox",
+"id": "add_image_padding",
+"default": false,
+"label": "t:sections.product-recommendations.settings.add_image_padding.label"
+},
+{
+"type": "checkbox",
+"id": "show_vendor",
+"default": false,
+"label": "t:sections.product-recommendations.settings.show_vendor.label"
+}
+]
+}
+{% endschema %}

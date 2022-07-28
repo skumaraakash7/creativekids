@@ -1,0 +1,272 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<style>
+/*   .accordion-button:not(.collapsed),.accordion-button:focus ,.accordion-button{
+    background-color:rgba(0,0,0,0);
+    box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%);
+    color: black;
+  }
+  .accordion-button:not(.collapsed)::after {
+    background-image: url(//cdn.shopify.com/s/files/1/0587/5866/0248/t/3/assets/1200px-Chevron_down_font_awesome.svg.png?v=1833645…);
+    transform: rotate(
+      -180deg);
+  }
+  .accordion-button::after {
+    background-image: url(//cdn.shopify.com/s/files/1/0587/5866/0248/t/3/assets/1200px-Chevron_down_font_awesome.svg.png?v=1833645…);
+  }
+  .h1_faq_ques.h1_faq_ques_margin_bottom h1 {
+    font-size: 22px;
+  }
+  p.We-are-dedicated-to_faq_tx {
+    font-size: 12px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .faq_quest_section {
+    margin-top: 45px;
+  }
+  .We-are-dedicated-to_faq_tx_pp {
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .img_e_t img {
+    width: 100%;
+}
+  .img_e_t {
+  height: 100%;
+    display: flex;
+    align-items: center;
+} */
+  
+/*   Jays new styles for FAQ page */
+  .faq-template {
+    background-color: white;
+/*     padding: 35px 0; */
+  }
+  .faq-template__section-main_title h1 {
+    font-size: 35px;
+  }
+  .faq-template__section-outer_content h2 {
+    font-size: 25px;
+  }
+  .faq-template__section-outer_content p {
+    font-size: 14px;
+  }  
+  .faq-template__section-outer_content {
+  }
+  .faq-template__section-main_title {
+   padding: 10px; 
+  }
+  .faq-template__section-inner_content {
+    flex: 50%;
+  }
+  .faq-template__section-answer {
+    margin-right: auto;     
+    margin-left: auto;         
+    padding-right: 10px;
+  }
+  .faq-template__section-image {
+    margin: auto;    
+  }
+    .faq-template__section-image img {
+      max-width: 100%;
+      max-height: auto;      
+  }
+
+/*   faq styles */
+
+  
+  
+  /**
+ * FAQ
+ */
+.shopify_explorer_faq__item--expandable > .shopify_explorer_faq__question {
+  cursor: pointer;
+}
+.shopify_explorer_faq__item--expandable > .shopify_explorer_faq__answer {
+  display: none;
+}
+
+.shopify_explorer_faq__item {
+  border-bottom: 1px solid #000;
+}
+.shopify_explorer_faq__item:not(:last-child) {
+  margin-bottom: 0.9em;
+}
+.shopify_explorer_faq__item .shopify_explorer_faq__question {
+  margin-bottom: 0.2em;
+  position: relative;
+  padding: 5px 25px;
+  padding-right: 30px;
+  margin: 0;
+}
+.shopify_explorer_faq__item .shopify_explorer_faq__question.active1::before {
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.shopify_explorer_faq__item .shopify_explorer_faq__answer {
+  padding: 10px 15px;
+}
+.shopify_explorer_faq__item .shopify_explorer_faq__answer.active1 {
+/*   border-top: 1px solid #000; */
+}
+.shopify_explorer_faq__item .shopify_explorer_faq__question::before {
+  position: absolute;
+  left: 0;
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;  
+  border-left: 13px solid black;
+  content: '';
+  display: flex;
+  margin-top: -11px;
+  pointer-events: none;
+  top: 50%;
+  -webkit-transform-origin: 66% 66%;
+  -ms-transform-origin: 66% 66%;
+  transform-origin: 66% 66%;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  width: 12px;
+}
+@media (max-width: 590px) {
+  .shopify_explorer_faq__item .shopify_explorer_faq__question::before {
+    width: 8px;
+    height: 8px;
+    margin-top: -7px;
+    right: 3px;
+  }
+}
+
+  .active1 {
+    display: flex !important;
+  }
+  /* Responsive layout - makes a one column-layout instead of two-column layout */
+@media (max-width: 650px) {
+  .active1 {
+    flex-direction: column;
+  }
+  .faq-template__section-half {
+  width: 100% !important;
+  }
+}
+@media (min-width: 651px) {
+  .faq-template__section-half{
+  max-width: 50%;
+  }
+}  
+  .rte.page-width {
+/*     provides spcing underneath the faq section */
+   padding-bottom: 35px;
+  }
+  .faq-template__section-full {
+    width: 100%;
+  }
+</style>
+
+
+          
+          
+          
+          
+<div class="faq-template faq-template-main-content page-width shopify_explorer__content ">
+  <div class="rte page-width">
+  <div class="faq-template__section-main_title">
+    <h1>{{ section.settings.title }}</h1>
+  </div>
+    {% for block in section.blocks %}
+  <div class="faq-template__section-outer_content 
+              shopify_explorer_faq__item shopify_explorer_faq__item--expandable
+              ">
+  <div class="faq-template__section-question 
+              shopify_explorer_faq__question h5
+              ">
+    <h3>{{ block.settings.title }}</h3>
+  </div>
+  <div class="faq-template__section-inner_content 
+              shopify_explorer_faq__answer 
+              ">      
+  <div class="faq-template__section-answer {% if block.settings.q_a_image %}faq-template__section-half{% else %}faq-template__section-full{% endif %}">
+    <div class="faq-template__section-column">
+    <p>{{ block.settings.q_a_answer }}</p>
+   </div>
+  </div>
+  {% if block.settings.q_a_image %}
+  <div class="faq-template__section-image">
+    <div class="faq-template__section-column">
+    <img src="{{ block.settings.q_a_image | img_url :'master'  }}" />
+    </div>
+  </div>
+  {% endif %}
+  </div>
+   </div>
+   
+    {% endfor %}
+  </div>
+  </div>    
+
+{% javascript %}
+(function() {
+  $('body').on('click', '.shopify_explorer_faq__question', function() {
+    $(this).next('.shopify_explorer_faq__answer').slideToggle(150).toggleClass('active1');
+    $(this).toggleClass('active1');
+  });
+  $(document).on('shopify:block:select', '#shopify-section-page-shopify_explorer_faq-template', function(event) {
+    $(event.target).find('.shopify_explorer_faq__answer').slideDown(150);
+  });
+  $(document).on('shopify:block:deselect', '#shopify-section-page-shopify_explorer_faq-template', function(event) {
+    $(event.target).find('.shopify_explorer_faq__answer').slideUp(150);
+  });
+}());
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "FAQ Title"
+    }
+  ],
+  "blocks": [
+     {
+       "name": "Question",
+       "type": "text",
+       "settings": [
+         {
+           "type": "textarea",
+           "id": "title",
+           "label": "Question"
+         },
+         {
+           "type": "textarea",
+           "id": "q_a_answer",
+           "label": "Answer"
+         },
+         {
+           "type": "image_picker",
+           "id": "q_a_image",
+           "label": "Image"
+         }
+       ]
+     }
+   ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "settings": {
+      },
+      "blocks": [
+        {
+          "type": "text"
+		}
+      ]
+    }
+  ]
+}
+{% endschema %}

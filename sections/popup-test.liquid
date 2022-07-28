@@ -1,0 +1,31 @@
+<head>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+{{ 'section-new-meet-the-team.css' | asset_url | stylesheet_tag }}
+{{ 'section-new-meet-the-team.js' | asset_url | script_tag }}
+
+
+  <button data-trigger="popup" data-target="#examplePopup">Click Me</button>
+
+    <div class="popup overlay" id="examplePopup">
+      <div class="popup-inner">
+        <div class="popup-content left">
+
+          <h2>Hello world!</h2>
+
+          <a class="popup-close" data-close aria-label="Close popup">Close popup</a>
+        </div>
+      </div>
+    </div>
+{% schema %}
+  {
+    "name": "Popup Test",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

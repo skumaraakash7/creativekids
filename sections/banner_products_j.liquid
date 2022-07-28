@@ -1,0 +1,222 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<style>
+  img.top_image {
+
+    width: 100%;
+    height: auto;
+  }
+  img.top_image2 {
+
+    width: 100%;
+    height: auto;
+    padding-top: 2%;
+  }
+  h2.pull
+  {
+    padding: 3%;
+    background-color: #00c2f3;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    font-family: 'Roboto',sans-serif;
+  }
+  .pull1{
+    padding-top:3%;
+  }
+
+  .pull1 img{
+    width: 100%;
+  }
+
+  h2.connect
+  {
+    padding: 3%;
+    background-color: #29c001;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    font-family: 'Roboto',sans-serif;
+
+  }
+  .connect1{
+    padding-top:3%;
+  }
+
+
+  .connect1 img{
+    width: 100%;
+  }
+  h2.create
+  {
+    padding: 3%;
+    background-color: #fe8100;
+    text-align: center;
+    color: white;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    font-family: 'Roboto',sans-serif;
+
+  }
+  .create1{
+    padding-top:3%;
+  }
+
+  .create1 img{
+    width: 100%;
+  }
+  .text_portion{
+    padding-bottom: 3%;
+    padding-top: 6%;
+    font-size: 13px;
+  }
+  .image_desc{
+    padding-top:10%;
+  }
+  .kit {
+    background-color: #fd1620;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto';
+    padding-top: 4px;
+  }
+  .kp img {
+    padding-top: 15%;
+  }
+  p.image_desc
+  {
+    font-family: 'Roboto';
+    color: #fd1620;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  .images_last{
+    border-right: 5px solid #fd1620;
+  }
+
+  .kit1{
+
+    background-color: #fd1620;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto';
+    padding-top: 4px;
+  }
+
+
+
+  .last_text h2 {
+
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Roboto';
+    text-align: center;
+    color: #e85e63;
+  }
+  .last_img img{
+    height: 190px;
+    padding-left: 30%;
+  }
+  .image_top_banner_1.mb-4 {
+    margin-bottom: 40px !important;
+  }
+  .image_top_banner_1 {
+    height: 250px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: block !important;
+  }
+  .pull1_pul_cnnect_0 {
+
+  }
+  @media screen and (min-width:1300px) {
+    .image_top_banner_1 {
+      height: 400px;
+    }
+  }
+  @media screen and (max-width:991px) {
+    p.image_desc {
+      font-size: 15px;
+    }
+    .last_text h2 {
+      font-size: 18px;
+    }
+    .last_img img {
+      height: 110px;
+    }
+  }
+  @media screen and (max-width:767px) {
+    .col-md-3.col-sm-6.images_last.images_last_2 {
+      border-right: 0px solid #fd1620;
+    }
+    .images_last_end {
+      border-right: 0px solid #fd1620;
+    }
+  }
+  @media screen and (max-width:500px) {
+    .image_desc {
+      padding-top: 10px;
+      padding-bottom: 15px;
+    }
+    .kp img {
+      padding-top: 0px;
+    }
+    .row.d_none_mb {
+      display:none;
+    }
+    .last_img img {
+      padding: unset;
+    }
+    .row.last_rowed {
+      text-align:center;
+    }
+    .new_mine_sipwes {
+      margin: 50px 0;
+    }
+  }
+  @media screen and (min-width:1000px) {
+    .ga-vertical-gallery .nav-container .slider-nav.slick-initialized.slick-slider.slick-vertical {
+      height: 315px !important;
+    }
+  }
+  .swiper-button-next, .swiper-button-prev {
+    color:black;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 34px;
+  }
+
+</style>
+
+
+
+<div class="banner_product_1_p">  
+  <div class="page-width">
+    {% if product.metafields.Content.a_content_image_banner_1 %}
+    <div>        
+        <div class="image_top_banner_1 mb-4" style="background-image:url({{product.metafields.Content.a_content_image_banner_1}});"></div>   
+    </div>
+    {% endif %}
+    {% if product.metafields.Content.a_content_image_banner_2 %}
+    <div>        
+        <div class="image_top_banner_1 mb-4" style="background-image:url({{product.metafields.Content.a_content_image_banner_2}});"></div>   
+    </div>
+    {% endif %}
+    {% if product.metafields.Content.a_content_image_banner_3 %}
+    <div>        
+        <div class="image_top_banner_1 mb-4" style="background-image:url({{product.metafields.Content.a_content_image_banner_3}});"></div>   
+    </div>
+    {% endif %}
+    {% if product.metafields.Content.a_content_image_banner_4 %}
+    <div>        
+        <div class="image_top_banner_1 mb-4" style="background-image:url({{product.metafields.Content.a_content_image_banner_4}});"></div>   
+    </div>
+    {% endif %}    
+  </div>
+</div>
+
+

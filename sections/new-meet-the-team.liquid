@@ -1,0 +1,243 @@
+{{ 'section-new-meet-the-team.css' | asset_url | stylesheet_tag }}
+{{ 'section-new-meet-the-team.js' | asset_url | script_tag }}
+
+<section class="meet-team-sec">
+  <div class="my-container page-width">
+    <div class="my-row" style="position: relative;">
+      <!--       First-person -->
+      {%- for block in section.blocks -%}
+      <div class="First-person">
+        {{block.settings.meet-now-person}}
+        <div class="image-container" style="position:relative;">
+          <img class="person-img" src="{{ block.settings.pick_image2 | img_url: 'master' }}" />
+          
+        <div class="person-fingers">
+            <img src="{{ 'Fingers.png' | asset_img_url:'master' }}" alt="" />
+        </div>
+        </div>
+        <div class="text_with_btn" >
+          <div style="background-color: {{ block.settings.Border-color }}" class="inner-div">
+            <div class="text-btn">
+              <div class="text-container">
+                <h1 class="person-name">{{ block.settings.add_text_2 }}</h1>
+                <p class="text-description">{{ block.settings.add_text_3 }}</p>
+              </div>
+              <div class="btn-container">
+                <a class="btn-meet" href="{{ block.settings.link-1 }}"><button  style="background-image: linear-gradient({{ block.settings.meet_team_person_top_gradient }},{{ block.settings.meet_team_person_bottom_gradient }});color:{{ block.settings.add_text_4_color }};" class="my-btn-meet raise" data-trigger="popup" data-target="#examplePopup{{forloop.index}}">Meet me</button></a>
+              </div>
+            </div>
+          </div>          
+          <div class="popup overlay" id="examplePopup{{forloop.index}}">
+            <div class="popup-inner" style="background-image: linear-gradient({{ block.settings.meet_team_person_top_gradient }},{{ block.settings.meet_team_person_bottom_gradient }});">
+              <div id="wbg-pop-{{ forloop.index }}" class="wbg-member-popup">
+                <div class="wbg-popup-row row">
+                  <div class="col-md-3 wbg-member-info">
+                    <h2 class="wbg-mem-name" style=" color: {{ section.settings.popup-headings }};">
+                      {{ block.settings.add_text_2 }}
+                    </h2>
+                    <p class="wbg-mem-designation" style="color:{{ section.settings.popup-txt }};">
+                      {{ block.settings.add_text_3 }}
+                    </p>
+                  </div>
+                  <div class="col-md-4 wbg-member-role">
+                    <h3 class="wbg-job-at-company wbg-title" style="color:{{ section.settings.popup-headings }};">
+                      {{ section.settings.job_title }}
+                    </h3>
+                    <div class="wbg-job-descp wbg-popup-descp" style="color:{{ section.settings.popup-txt }};">
+                      {{ block.settings.job_descp }}
+                    </div>
+                  </div>
+                  <div class="col-md-4 wbg-member-hobbies">
+                    <h3 class="wbg-title wbg-hobbies-title" style="color:{{ section.settings.popup-headings }};">
+                      {{ section.settings.hobbies_title }}
+                    </h3>
+                    <div class="wbg-hobbies-details wbg-popup-descp" style="color:{{ section.settings.popup-txt }};">
+                      {{ block.settings.hobbies_details }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="popup-close" data-close aria-label="Close popup"
+                 style="background-image: linear-gradient({{ block.settings.meet_team_person_top_gradient }},{{ block.settings.meet_team_person_bottom_gradient }});"   
+                 >
+                <span class="cross-hairlines"></span>
+                <span class="cross-hairlines"></span>                
+              </a>
+            </div>
+          </div>          
+        </div>
+      </div>
+
+      {% endfor %}
+      <!--       First-End-person -->
+    </div>
+    <div class="my-btn-container">
+      <a class="btn-bottom" href="{{ section.settings.link-2 }}"><img src="{{ section.settings.button_image_1 | img_url: 'master' }}"  class="my-btn-meet-2" /></a>
+      <a class="btn-bottom" href="{{ section.settings.link-3 }}"><img src="{{ section.settings.button_image_2 | img_url: 'master' }}"  class="my-btn-meet-2" /></a>
+    </div>
+  </div>
+</section>
+
+<center>
+  <div class="bottom-white-space page-width-bottom-white-space">
+    <span></span>
+  </div>
+</center>
+  <script>
+  $(document).ready(function() {
+    $(window).resize(function(){
+      var containerWidth = $(".my-container.page-width").width();
+      maxWidth = containerWidth + 5;      
+      var colWidth = $(".First-person").width();
+      rePositionPopup = colWidth + 15;      
+      var topPosition = $("img.person-img").height();
+
+    var CurrentBtn =$('.my-btn-meet.raise[data-trigger="popup"]'); 
+    var CurrentClose =$('.popup-close');
+    $(CurrentBtn).click(function(){
+      $(this).parents('.First-person').toggleClass('active');
+      $(this).parents('.First-person').find('.person-fingers').css('display','block');
+      var curPoss = $(this).parents('.First-person.active').find('.text_with_btn').position();
+	  var curTop = curPoss.top;
+      $('.my-btn-meet').prop( "disabled", true );
+      if(window.matchMedia('(min-width: 1201px)').matches) {
+    $(".popup.overlay").css('top' , +curTop+'px');      
+      }
+    });
+    $(CurrentClose).click(function(){
+      $('.my-btn-meet').prop( "disabled", false );
+      $(this).parents('.First-person').toggleClass('active');      
+      $(this).parents('.First-person').find('.person-fingers').css('display','none');
+    });
+
+
+    $(".popup.overlay").css({'width' : +maxWidth+'px' , 'top' : +topPosition+'px' });
+    
+    // for reposition on breakpoint
+    $(".popup.overlay").css({'width' : +maxWidth+'px' , 'top' : +topPosition+'px'});
+        if (window.matchMedia('(min-width: 1201px)').matches) {
+          $(".popup.overlay").css({'width' : +maxWidth+'px' , 'top' : +topPosition+'px' ,'transform' : 'translateY(0px)'});
+          $(".text_with_btn").css('position' , 'unset');
+        }else if (window.matchMedia('(max-width: 1200px)').matches) {
+          $(".text_with_btn").css('position' , 'relative');
+          $(".popup.overlay").css({'width' : +maxWidth+'px' , 'top' : +topPosition+'px' , 'transform' : 'translateY(-'+topPosition+'px)', 'bottom': 'auto'});        
+          $(".First-person:nth-child(2n) .popup.overlay").css({'transform' : 'translate(-'+rePositionPopup+'px , -'+topPosition+'px)'});
+        }
+        if (window.matchMedia('(max-width: 500px)').matches) {
+          $(".First-person:nth-child(2n) .popup.overlay").css({'transform' : 'translate(0px , -'+topPosition+'px)'});
+        }
+    }).resize();
+  });
+
+  </script>
+{% schema %}
+{
+"name": "Meet-The-Team",
+"settings": [
+{
+"type": "image_picker",
+"id": "button_image_1",
+"label": "About Us BG image"
+},
+{
+"type": "url",
+"id": "link-2",
+"label": "Button Link-1"
+},
+{
+"type": "image_picker",
+"id": "button_image_2",
+"label": "Our Mission BG image"
+},
+{
+"type": "url",
+"id": "link-3",
+"label": "Button Link-2"
+},
+{
+"id"     : "job_title",
+"label"  : "Job Title",
+"type"   : "text"
+},
+{
+"id"     : "hobbies_title",
+"label"  : "Hobbies Title",
+"type"   : "text"
+},
+{
+"id"     : "popup-headings",
+"label"  : "Popup Heading Color",
+"type"   : "color",
+"default": "#9F238F"
+},
+{
+"id"     : "popup-txt",
+"label"  : "Popup Text Color",
+"type"   : "color",
+"default": "#808285"
+}
+
+],
+"blocks": [
+{
+"type": "image",
+"name" : "Add Meet Now Persons",
+"settings" :[
+
+{
+"type": "image_picker",
+"id": "pick_image2",
+"label": "Add image"
+},
+{
+"type": "color",
+"id": "Border-color",
+"label": "Choose Border Color",
+"default": "#000"
+},
+{
+"type": "text",
+"id": "add_text_2",
+"label": "Person Name"
+},
+{
+"type": "text",
+"id": "add_text_3",
+"label": "Person Description"
+},
+{
+"type": "color",
+"id": "add_text_4_color",
+"label": "Button text color"
+},
+{
+"type": "color",
+"id": "meet_team_person_top_gradient",
+"label": "Top Gradient Color"
+},
+{
+"type": "color",
+"id": "meet_team_person_bottom_gradient",
+"label": "Bottom Gradient Color"
+},
+{
+"id"     : "job_descp",
+"label"  : "Job Description",
+"type"   : "textarea"
+},
+{
+"id"     : "hobbies_details",
+"label"  : "Hobbies Details",
+"type"   : "textarea"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Meet-The-Team",
+"category": "Custom Sections"
+}
+]
+}
+{% endschema %}

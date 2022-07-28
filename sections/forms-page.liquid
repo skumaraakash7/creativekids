@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<style>
+
+  .rte.page-width p {
+    font-size: 14px;
+	padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .preform_text h1 {
+    color: #ECA53F;
+    padding-bottom: 1rem;
+  }  
+  .error-message {
+    display: none !important;
+  }
+    
+</style>
+
+<div class="forms-page page-width"  style="margin: auto; background-color: white;">
+{% comment %}
+  <h1 class="main-page-title page-title h1 page-width">
+    {{ page.title | escape }}
+  </h1>
+{% endcomment %}  
+
+  <div class="rte page-width">
+    <div class="preform_text">
+    <h1>{{section.settings.preform_text}}</h1>
+    </div>
+    <div>
+    {{ page.content }}
+    </div>
+  </div>
+</div>
+<center>
+  <div class="bottom-white-space page-width-bottom-white-space">
+  <span></span>
+  </div>
+</center>
+<style>
+  .bottom-white-space {
+    background: #fff;
+    height: 100px;
+    padding: 4rem 0rem 13rem 0rem;
+    margin: auto auto -13rem auto;
+  }
+  .page-width-bottom-white-space {
+  max-width: 1400px;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width-bottom-white-space{
+    width: 80%;
+  }
+}
+  
+@media screen and (max-width: 1199px) {
+.page-width-bottom-white-space {
+    width: 90%;
+}
+}
+  table, th, td {
+  border: .1px solid white !important;
+  box-shadow: 0 0 0 0 white !important;
+  
+}
+</style>
+
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "preform_text",
+      "label": "Preform Text"
+    }
+  ]
+}
+{% endschema %}

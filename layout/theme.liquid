@@ -1,0 +1,275 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    {% if settings.favicon_img_1 != blank %}
+    <link rel="shortcut icon" href="{{ settings.favicon_img_1 | img_url:'master' }}" type="image/x-icon">
+    {% else %}
+    <link rel="shortcut icon" href="{{ settings.favicon_img | img_url:'master' }}" type="image/x-icon">
+    {% endif %}
+    <meta name="theme-color" content="">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- unless settings.type_header_font.system? -%}
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="preload stylesheet">
+    <title>{{ shop.name }}</title>
+
+    
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    {{ content_for_header }}
+
+    {%- liquid
+      assign body_font_bold = settings.type_body_font | font_modify: 'weight', 'bold'
+      assign body_font_italic = settings.type_body_font | font_modify: 'style', 'italic'
+      assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    %}
+
+    {% style %}
+    {{ settings.type_body_font | font_face: font_display: 'swap' }}
+    {{ body_font_bold | font_face: font_display: 'swap' }}
+    {{ body_font_italic | font_face: font_display: 'swap' }}
+    {{ body_font_bold_italic | font_face: font_display: 'swap' }}
+    {{ settings.type_header_font | font_face: font_display: 'swap' }}
+
+    :root {
+    --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    --font-body-style: {{ settings.type_body_font.style }};
+    --font-body-weight: {{ settings.type_body_font.weight }};
+
+    --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+    --font-heading-style: {{ settings.type_header_font.style }};
+    --font-heading-weight: {{ settings.type_header_font.weight }};
+
+    --color-base-text: {{ settings.colors_text }};
+    --color-base-text-rgb: {{ settings.colors_text | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-base-background-1: {{ settings.colors_background_1 }};
+    --color-base-background-1-rgb: {{ settings.colors_background_1 | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-base-background-2: {{ settings.colors_background_2 }};
+    --color-base-background-2-rgb: {{ settings.colors_background_2 | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-base-solid-button-labels: {{ settings.colors_solid_button_labels }};
+    --color-base-solid-button-labels-rgb: {{ settings.colors_solid_button_labels | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-base-outline-button-labels: {{ settings.colors_outline_button_labels }};
+    --color-base-outline-button-labels-rgb: {{ settings.colors_outline_button_labels | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-base-accent-1: {{ settings.colors_accent_1 }};
+    --color-base-accent-1-rgb: {{ settings.colors_accent_1 | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-base-accent-2: {{ settings.colors_accent_2 }};
+    --color-base-accent-2-rgb: {{ settings.colors_accent_2 | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+
+    --color-base-text-opacity-10-percent: {{ settings.colors_text | color_mix: settings.colors_background_1, 10 }};
+    --color-base-text-opacity-20-percent: {{ settings.colors_text | color_mix: settings.colors_background_1, 20 }};
+    --color-base-text-opacity-55-percent: {{ settings.colors_text | color_mix: settings.colors_background_1, 55 }};
+    --color-base-text-opacity-85-percent: {{ settings.colors_text | color_mix: settings.colors_background_1, 85 }};
+    --color-base-accent-1-opacity-10-percent: {{ settings.colors_accent_1 | color_mix: settings.colors_background_1, 10 }};
+    --color-base-accent-2-opacity-10-percent: {{ settings.colors_accent_2 | color_mix: settings.colors_background_1, 10 }};
+    }
+
+    *,
+    *::before,
+    *::after {
+    box-sizing: inherit;
+    }
+
+    html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+    height: 100%;
+    }
+
+    body {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 100%;
+    min-height: 100%;
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.06rem;
+    line-height: 1.8;
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: var(--font-body-weight);
+    }
+
+    @media screen and (min-width: 750px) {
+    body {
+    font-size: 1.6rem;
+    }
+    }
+    {% endstyle %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {%- unless settings.type_body_font.system? -%}
+    <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+    {%- unless settings.type_header_font.system? -%}
+    <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
+    {%- endunless -%}
+<!--     Start Museo Font -->
+    <link rel="preload stylesheet" href="https://use.typekit.net/rsr8dbq.css" crossorigin>
+<!--	End Museo Font -->    
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+  .jdgm-prev-badge .jdgm-prev-badge__stars .jdgm-star,
+    .jdgm-rev-widg__summary .jdgm-rev-widg__summary-stars .jdgm-star,
+    .jdgm-histogram__row .jdgm-histogram__star .jdgm-star, .jdgm-rev .jdgm-rev__header .jdgm-rev__rating .jdgm-star, .jdgm-rev-widg__header .jdgm-rev-widg__summary
+    .jdgm-histogram .jdgm-histogram__star .jdgm-histogram__row .jdgm-rev__rating
+    { font-family: 'JudgemeStar' !important;}
+      .jdgm-paginate__first-page, .jdgm-paginate__last-page, .jdgm-paginate__prev-page, .jdgm-paginate__next-page {
+    font-family: 'JudgemeIcons'!important;
+    display: inline-block!important;
+      }
+  </style>
+
+  {% render 'shogun-head' %}
+</head>
+
+  <body style="background-color: #fff;">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ "accessibility.skip_to_text" | t }}
+    </a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{ 'custom_file.css' | asset_url | stylesheet_tag }}  
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+{% if request.path contains '/collections/' %}
+    <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+    {%endif%}
+    {% section 'footer' %}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+    </ul>
+
+    <script>
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}'
+      };
+
+      window.cartStrings = {
+        error: `{{ 'sections.cart.cart_error' | t }}`,
+        quantityError: `{{ 'sections.cart.cart_quantity_error_html' | t }}`
+      }
+
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      }
+    </script>
+
+    <script src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'custom_js.js' | asset_url }}" defer="defer"></script>    
+<!--     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> -->
+  
+  <!-- Start of creativekidshelp Zendesk Widget script -->
+
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=9f3808a5-07d3-46a4-a37f-9f478139c3af"> </script>
+
+<!-- End of creativekidshelp Zendesk Widget script -->
+
+<!--     Start of accessibe -->
+    
+<script> (function(){ var s = document.createElement('script'); var h = document.querySelector('head') || document.body; s.src = 'https://acsbapp.com/apps/app/dist/js/app.js'; s.async = true; s.onload = function(){ acsbJS.init({ statementLink : '', footerHtml : '', hideMobile : false, hideTrigger : false, disableBgProcess : false, language : 'en', position : 'right', leadColor : '#146FF8', triggerColor : '#146FF8', triggerRadius : '50%', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerIcon : 'people', triggerSize : 'bottom', triggerOffsetX : 20, triggerOffsetY : 20, mobile : { triggerSize : 'small', triggerPositionX : 'right', triggerPositionY : 'bottom', triggerOffsetX : 20, triggerOffsetY : 20, triggerRadius : '20' } }); }; h.appendChild(s); })();</script>
+<!--     End of accessibe -->
+  
+  </body>
+  <style>
+    .swiper_disclosed .swiper-slide img {
+      width: 50% !important;
+      margin: auto;
+      display: block;
+    }
+    @media screen and (max-width:550px) {
+      .swiper_disclosed .swiper-slide img {
+        width: 70% !important;
+      }
+    }
+     @font-face {
+      font-family: obviously;
+      src: url({{ 'Obviously-Semibold.woff2'  | asset_url }});
+    }    
+/*     @font-face {
+      font-family: obviously;
+      src: url({{ 'Obviously-Semibold.woff2'  | asset_url }});
+    }
+    @font-face {
+      font-family: BroadSansBold;
+      src: url({{ 'BroadSans-Bold.woff'  | asset_url }});
+      font-weight:700;
+    }
+    @font-face {
+      font-family: BroadSansExtraBold;
+      src: url({{ 'BroadSans-ExtraBold.woff'  | asset_url }});
+      font-weight:900;
+    }
+    @font-face {
+      font-family: BroadSansRegular;
+      src: url({{ 'BroadSans-Regular.woff'  | asset_url }});
+      font-weight:400;
+    }
+    @font-face {
+      font-family: BrownLLWebMedium;
+      src: url({{ 'BrownLLWeb-Medium.woff2'  | asset_url }});
+      font-weight:500;
+    }
+    @font-face {
+      font-family: BrownLLWebRegular;
+      src: url({{ 'BrownLLWeb-Regular.woff2'  | asset_url }});
+      font-weight:400;
+    }
+    
+    @font-face {
+      font-family: Museo;
+      src: url("//db.onlinewebfonts.com/t/a2c60e4f5160aab9ba5d29204fc164fc.woff2") format("woff2");
+    } */
+    
+    .jdgm-rev__br {
+      display: none!important;
+    }
+    .jdgm-rev__body p {
+      padding-left: 0!important;
+    }
+    .jdgm-histogram__bar {
+    overflow: hidden!important;
+      border: 1.5px solid black !important;
+border-radius: 30px !important;
+    height: 95%!important;
+    box-sizing: content-box!important;
+    }
+    .jdgm-histogram__bar-content {
+      border-radius: 30px 0 0 30px !important;
+    }
+  </style>
+  <script>
+	$( document ).ready(function() {
+		$( ".my-sun-mobile-img" ).click(function() {
+   			$( "#launcher" ).contents().find( "button.wrapper-3hgZT" ).click()[0];
+		});
+	});
+ 
+  </script>
+</html>

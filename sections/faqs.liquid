@@ -1,0 +1,86 @@
+<div class="faq_quest_section">
+  <div class="page-width">
+    {% for block in section.blocks %}
+    {%- case block.type -%}
+    {%- when 'About-Faq-section'-%}
+    <div class="h1_faq_ques h1_faq_ques_margin_bottom">
+      <h1>{{ block.settings.title }}</h1>
+      <p class="We-are-dedicated-to_faq_tx">{{ block.settings.Description }}</p>
+    </div>
+    {%- when 'Q-A'-%}
+    <div class="accordion accordion-flush" id="accordionFlushExample_{{ block.id }}">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne_{{ block.id }}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne_{{ block.id }}" aria-expanded="false" aria-controls="flush-collapseOne_{{ block.id }}">
+            {{ block.settings.Question }}
+          </button>
+        </h2>
+        <div id="flush-collapseOne_{{ block.id }}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne_{{ block.id }}" data-bs-parent="#accordionFlushExample_{{ block.id }}">
+          <div class="accordion-body">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="img_e_t">
+            		<p class="We-are-dedicated-to_faq_tx_pp">{{ block.settings.Answer }}</p>                  
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="img_e_t">
+					<img src="{{ block.settings.img_1 | img_url :'master' }}">
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endcase -%}
+    {% endfor %} 
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "settings": [],
+  "blocks": [
+    {
+      "type": "Q-A",
+      "name": "Q/A",
+		"settings": [
+          {
+            "type": "textarea",
+            "id": "Question",
+            "label": "Question"
+          },
+          {
+            "type": "textarea",
+            "id": "Answer",
+            "label": "Answer"
+          },
+          {
+            "type": "image_picker",
+            "id": "img_1",
+            "label": "Image"
+          }
+      ]
+    },
+    {
+      "type": "About-Faq-section",
+      "name": "About Faq section",
+		"settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "textarea",
+              "id": "Description",
+              "label": "Description"
+			}
+		]
+    }
+  ]
+}
+{% endschema %}

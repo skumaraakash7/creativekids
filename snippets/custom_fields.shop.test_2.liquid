@@ -1,0 +1,35 @@
+{% if shop.metafields.custom_fields["test_2"] != blank %}
+  <div class="custom-field custom-field__test-2 custom-field__type--field-collection-json">
+    <h3 class="custom-field--title">test 2</h3>
+    <div class="custom-field--value">
+      {% for item in shop.metafields.custom_fields["test_2"] %}
+        <div class="fc-item fc-index--{{ forloop.index0 }}">
+           {% if item["test_stroed_as_image"] != blank %}
+             <div class="fc-field field__test-stroed-as-image field-type--image-repeater">
+               <h4 class="custom-field--title">test stroed as image</h4>
+               <div class="custom-field--value">
+                 {% for repeater_item in item["test_stroed_as_image"] %}
+                   <div class="repeater-item repeater-item--image">
+                     {{ repeater_item["test_stroed_as_image"] }}
+                   </div>
+                 {% endfor %}
+               </div>
+             </div>
+           {% endif %}
+           {% if item["test_stored_as_url_to_image"] != blank %}
+             <div class="fc-field field__test-stored-as-url-to-image field-type--image-repeater">
+               <h4 class="custom-field--title">test stored as url to image</h4>
+               <div class="custom-field--value">
+                 {% for repeater_item in item["test_stored_as_url_to_image"] %}
+                   <div class="repeater-item repeater-item--image">
+                     {{ repeater_item["test_stored_as_url_to_image"] }}
+                   </div>
+                 {% endfor %}
+               </div>
+             </div>
+           {% endif %}
+         </div>
+       {% endfor %}
+    </div>
+  </div>
+{% endif %}

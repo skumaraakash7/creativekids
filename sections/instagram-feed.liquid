@@ -1,0 +1,80 @@
+<style>
+
+  .instagram-section-header h1 {
+	padding: 25px;    
+  	background-image:url({{ section.settings.instagram_header_bkg | img_url : 'master' }});
+    background-size: cover;
+    height: 100%;
+    max-width: 1400px;
+    background-repeat: no-repeat;
+    color: white; 
+    margin: auto;
+    text-align: center;        
+  }
+  .review_slider--title.page-width {
+    padding: 0 0 5px 0 !important;
+  }
+  .instagram-section {
+    padding: 0 !important;
+    background-color: white;
+  }
+  .instagram-inner-content {
+   padding: 10px 0; 
+  }
+  @media screen and (max-width: 600px) {
+    .instagram-section-header h1 {
+	    border-radius: 15px;
+    }
+  }  
+  .eapps-instagram-feed-posts-item-image-wrapper {
+    border-radius: 25px;
+  }
+  .eapps-instagram-feed-posts-slider-next {
+/*     display: none; */
+  }
+</style>
+
+<div class="instagram-section page-width">
+{% if section.settings.instagram_header_title and section.settings.custom_liquid  %}
+
+<div class="instagram-section-header">
+  <h1>{{ section.settings.instagram_header_title }}</h1>
+</div>
+
+{% endif %}
+
+<div class="instagram-inner-content">
+{{ section.settings.custom_liquid }}
+</div>
+</div>
+
+{% schema %}
+{
+  "name": "Instagram Section",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+    "id" 	: "instagram_header_bkg",
+    "label" : "Header Background",
+    "type"	: "image_picker"
+    },
+    {
+    "id" 	: "instagram_header_title",
+    "label" : "Header Title",
+    "type"	: "text"
+    },
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:sections.custom-liquid.settings.custom_liquid.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram Section"
+    }
+  ]
+}
+
+{% endschema %}

@@ -1,0 +1,109 @@
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+<style>
+  .img_col_1 {
+    position: relative !important;
+    height: 100% !important;
+    width: 100% !important;  
+    margin: auto !important;
+    max-width: 1920px !important;
+    background-color: transparent !important;
+    min-width: 100% !important;
+
+  }
+  @media screen and (max-width: 1000px) {
+    .img_col_1 {
+      min-width: 100% !important;
+    }
+  }
+  .collection-hero__image-container {
+    min-height: auto !important;
+    overflow: unset !important;
+    background-color: transparent !important;
+    height:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 750px) {
+    .img_col_1 {
+      height: 350px !important;
+      width: auto !important;
+    }
+  }
+  @media screen and (max-width:500px) {
+    .img_col_1 {
+      height: auto !important;
+      width: 100% !important;
+    }
+  }
+  .collection-hero__image-container {
+    margin: 0;
+  }
+  .collection-hero.collection-hero--with-image {
+    background-color: transparent;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .shopify-section.spaced-section.collection-grid-section {
+    margin-top: 0;
+  }
+  body {
+    background-color: rgba(250,248,246,1);
+  }
+  .shopify-section.spaced-section.collection-grid-section .page-width {
+    background-color: white;
+  }
+  .collection-product-count {
+    margin-top: 0 !important;
+    padding-top: 1.5rem;
+  }
+  /*   important css */
+
+  .grid_collection_custom {
+    margin-top: 0px !important;
+  }
+  div#main-collection-filters {
+    padding-top: 0px !important;
+  } 
+  @media screen and (min-width: 900px) {
+    .pagination-wrapper {
+      margin-bottom: 2rem !important;
+    }
+  }
+</style>
+
+<div class="collection-hero collection-hero--with-image">
+  <div class="collection-hero__inner">
+    <div class="collection-hero__image-container media">
+      <img srcset="{%- if section.settings.main_banner_image.width >= 165 -%}{{ section.settings.main_banner_image | img_url: '165x' }} 165w,{%- endif -%}
+                   {%- if section.settings.main_banner_image.width >= 360 -%}{{ section.settings.main_banner_image | img_url: '360x' }} 360w,{%- endif -%}
+                   {%- if section.settings.main_banner_image.width >= 535 -%}{{ section.settings.main_banner_image | img_url: '535x' }} 535w,{%- endif -%}
+                   {%- if section.settings.main_banner_image.width >= 720 -%}{{ section.settings.main_banner_image | img_url: '720x' }} 720w,{%- endif -%}
+                   {%- if section.settings.main_banner_image.width >= 940 -%}{{ section.settings.main_banner_image | img_url: '940x' }} 940w,{%- endif -%}
+                   {%- if section.settings.main_banner_image.width >= 1070 -%}{{ section.settings.main_banner_image | img_url: '1920x' }} 1070w{%- endif -%}"
+           class="img_col_1"
+           src="{{ section.settings.main_banner_image | img_url: '1920x' }}"
+           sizes="(min-width: 1100px) 1100px, (min-width: 750px) calc(50vw - 130px), calc(50vw - 55px)"
+           alt="{{ page.title | escape }}"
+           loading="lazy"
+           width="{{ section.settings.main_banner_image.width }}"
+           height="{{ section.settings.main_banner_image.height }}"
+           >
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "Main Banner",
+"class": "spaced-section spaced-section--full-width",
+"settings": [
+{
+"type": "image_picker",
+"id": "main_banner_image",
+"label": "Banner image"
+}
+]
+}
+{% endschema %}

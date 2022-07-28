@@ -1,0 +1,417 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+<style>
+  .main-blog.page-width {
+    width: 100%;
+    padding: 0;
+  }
+  .main-categories-blog-page {
+    display: grid;
+    grid-template-columns: 70% 30%;
+/*     width: 80%; */
+    margin: auto;
+    max-width: 1400px;
+    background-color: white;
+  }
+  .main-categories-blog-page {
+    padding-left: 10px;
+    padding-right: 10px;
+/*     margin-top: -5rem; */
+    background: white;
+    padding-bottom: 8rem;
+    margin-bottom: -16rem;
+  }
+
+  .left-div {
+    max-width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  img.motion-reduce {
+/*     border-right: 3.5px solid #cdc8c8; */
+    padding-right: 10px;
+  }
+  .right-10-blogs {
+    padding-left: 12px;
+  }
+  .article-card__image.media.media--landscape {
+    padding-bottom: 48.6%;
+  }
+  article.article-card {
+    display: block;
+  }
+  .article-card__image-contain {
+      display: flex !important;
+ 	 justify-content: center;
+  }
+  .main-blog.page-width {
+    background: white !important;
+  }
+  article.article-card {
+    background: white;
+  }
+  article.article-card:first-child {
+	border-bottom: 0.5px black solid;
+  }  
+  h1.article-template__title {
+    text-align: left;
+  }
+  .article-template__content-2.page-width.page-width--narrow.rte {
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 20px;
+    margin-top: 2rem;
+  }
+  .article-template__content-2.page-width.page-width--narrow.rte>div>p {
+    font-size: 1.4rem;
+    text-align: left;
+    margin-right: 20px;
+  }
+  .text-description-blog {
+    font-size: 1.4rem;
+    text-align: left;
+    margin-right: 20px;
+  }
+  h1.article-template__title {
+    margin-left: 5px;
+  }
+  .Polaris-TextContainer_szg8b>p {
+    text-align: left;
+    margin-bottom: 2rem;
+    margin-top: 0 !important;
+  }
+  .Polaris-TextContainer_szg8b {
+    text-align: left;
+    margin-bottom: 2rem;
+    margin-top: 0 !important;
+  }
+  .excerpt_blog_post p { 
+    text-align: left;
+  }
+  .article-template__content-2.page-width.page-width--narrow.rte {
+    padding: 0 !important;
+  }
+  @media screen and (max-width: 1300px) and (min-width: 1000px) {
+    .main-categories-blog-page {
+      grid-template-columns: 60% 40%;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .main-categories-blog-page {
+      width: 90%;
+      padding-bottom: 6rem;
+	  margin-bottom: -6rem;      
+    }
+    .main-categories-blog-page {
+      grid-template-columns: 100%;
+    }
+  }
+  .padding_bot_dd {
+   padding-top: 2px; 
+  }
+</style>
+<div class="main-categories-blog-page no-banner-top-space page-width">
+  <div class="left-div">
+    {%- paginate blog.articles by 2 -%}
+
+    <div class="main-blog page-width">
+      <!--       <h1 class="title--primary">{{ blog.title | escape }}</h1> -->
+
+      <div class="blog-articles">
+        {%- for article in blog.articles -%}
+        {% comment %}
+        <div class="blog-articles__article article">
+          {%- render 'article-card', article: article, show_image: section.settings.show_image -%}
+        </div>
+        {% endcomment %}
+        
+        <article class="article-card{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+            <h1 class="article-template__title" itemprop="headline">{{ article.title | escape }}</h1>
+
+             <div class="article-card__image-wrapper">
+      <div class="article-card__image media media--landscape" style="background-color: white;">
+        <a href="{{ article.url }}" class="article-card__image-contain">
+          <img srcset="
+                     {%- if article.image.src.width >= 165 -%}{{ article.image.src | img_url: '165x' }} 165w,{%- endif -%}
+                     {%- if article.image.src.width >= 360 -%}{{ article.image.src | img_url: '360x' }} 360w,{%- endif -%}
+                     {%- if article.image.src.width >= 533 -%}{{ article.image.src | img_url: '533x' }} 533w,{%- endif -%}
+                     {%- if article.image.src.width >= 720 -%}{{ article.image.src | img_url: '720x' }} 720w,{%- endif -%}
+                     {%- if article.image.src.width >= 940 -%}{{ article.image.src | img_url: '940x' }} 940w,{%- endif -%}
+                     {%- if article.image.src.width >= 1066 -%}{{ article.image.src | img_url: '1066x' }} 1066w{%- endif -%}"
+             src="{{ article.image.src | img_url: '533x' }}"
+             sizes="(min-width: 1100px) 535px, (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)"
+             alt="{{ article.image.src.alt | escape }}"
+             width="{{ article.image.width }}"
+             height="{{ article.image.height }}"
+             loading="lazy"
+             class="motion-reduce"
+             >
+        </a>
+      </div>
+  <div class="excerpt_blog_post">
+    <p>{{ article.excerpt }}</p>
+  </div>
+          </div>
+        </article>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+      {%- endif -%}
+    </div>
+    {%- endpaginate -%}
+  </div>
+  <div class="right-10-blogs">
+    <div class="endif_sec_all_blogy_000_closed_p">
+      <div class="endif_sec_all_blogy_000">
+        <div>
+          <div class="{% if section.settings.heading == blank %} title-wrapper-with-link--no-heading{% endif %}">
+            <h2 class="bg_or_11" style="background-color: #F45B1F">{{ section.settings.heading_1 | escape }}</h2>
+          </div>
+          <ul
+              class="blog__posts_limits_00 multiple_blogs {% if posts_exceed_limit %} blog__posts--{{ section.settings.post_limit }}-items{% else %} blog__posts--{{ section.settings.blog.articles_count }}-items{% endif %}"
+              role="list"
+              >
+            {%- for article in section.settings.blog_1.articles limit: section.settings.post_limit -%}
+            <li class="padding_bot_dd">
+              <article class="{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+                <a href="{{ article.url }}" class="link_flexy_00">
+                  <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                      {%- if show_image == true or article.image -%}
+                      <div class="motion-reduce width_100di" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+
+                      </div>
+                      {%- endif -%}                    
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                      <div>
+                        <header>
+                          <h2 class="fnt_set" id="Article-{{ article.id }}">
+                            {{ article.title | escape }}
+                          </h2>
+                          <div class="opac_5">
+                            <span class="caption-with-letter-spacing">{{ article.author -}} </span>
+                            <span>
+                              {{ article.published_at | date: "%B %-d, %Y"  }}
+                            </span>
+                          </div>
+                        </header>
+                      </div>
+                    </div>                    
+                  </div>
+                </a>
+              </article>
+            </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>  
+
+      <div class="blog_slider_tending">
+        <h1 class="tre_now">{{ section.settings.all_collection_text }}</h1>
+        <div class="tranding_proycr_most">
+          <div class="swiper mySwiper tranding_proycr_most_s">
+            <div class="swiper-wrapper">
+              {% for product in collections[section.settings.all_collection].products limit:15 %}              
+              <div class="swiper-slide">
+                <a href="{{ product.url }}" class="collection-slider">
+                  <div class="btn_fle_ror_product">
+                    <div class="btn_fle_ror_product_image">
+                      <div class="btn_fle_ror_product_image_1">
+                        <img src="{{ product.featured_image | img_url:'master' }}">
+                      </div>
+                    </div>
+                    <div class="btn_fle_ror_product_title">
+                      <div class="btn_fle_ror_product_title_1">
+                        {{ product.title }}
+                      </div>        
+                      <div class="btn_fle_ror flex justify-center">
+                        {% if product.compare_at_price > product.price %}
+                        <del class="price-sale">
+                          {{product.compare_at_price | money }}
+                        </del>
+                        <div class="btn btn-primary">
+                          {{ product.price | money }}
+                        </div>
+                        {% else %}
+                        <div class="btn btn-primary">
+                          {{ product.price | money }}
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>          
+        </div>
+      </div>
+
+      <div class="endif_sec_all_blogy_000">
+        <div>
+          <div class="{% if section.settings.heading == blank %} title-wrapper-with-link--no-heading{% endif %}">
+            <h2 class="bg_or_11" style="background-image:url({{ 'section-mask.png' | asset_url }})">{{ section.settings.heading_2 | escape }}</h2>
+          </div>
+          <ul
+              class="blog__posts_limits_00 multiple_blogs {% if posts_exceed_limit %} blog__posts--{{ section.settings.post_limit_1 }}-items{% else %} blog__posts--{{ section.settings.blog.articles_count }}-items{% endif %}"
+              role="list"
+              >
+            {%- for article in section.settings.blog_2.articles limit: section.settings.post_limit_1 -%}
+            <li class="padding_bot_dd">
+              <article class="{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}" aria-labelledby="Article-{{ article.id }}">
+                <a href="{{ article.url }}" class="link_flexy_00">
+                  <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                      {%- if show_image == true or article.image -%}
+                      <div class="motion-reduce width_100di" style="background-image:url({{ article.image.src | img_url: '533x' }})">
+
+                      </div>
+                      {%- endif -%}                    
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-12">
+                      <div>
+                        <header>
+                          <h2 class="fnt_set" id="Article-{{ article.id }}">
+                            {{ article.title | escape }}
+                          </h2>
+                          <div class="opac_5">
+                            <span class="caption-with-letter-spacing">{{ article.author -}} : </span>
+                            <span>
+                              {{ article.published_at | date: "%B %-d, %Y"  }}
+                            </span>
+                          </div>
+                        </header>
+                      </div>
+                    </div>                    
+                  </div>
+                </a>
+              </article>
+            </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      </div>  
+
+    </div>
+  </div>
+</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper.tranding_proycr_most_s", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+{% schema %}
+{
+"name": "t:sections.main-blog.name",
+"tag": "section",
+"settings": [
+{
+"type": "header",
+"content": "t:sections.main-blog.settings.header.content"
+},
+{
+"type": "checkbox",
+"id": "show_image",
+"default": true,
+"label": "t:sections.main-blog.settings.show_image.label",
+"info": "t:sections.main-blog.settings.show_image.info"
+},
+{
+"type": "paragraph",
+"content": "t:sections.main-blog.settings.paragraph.content"
+},
+{
+"type": "text",
+"id": "heading_1",
+"label": "Title 1"
+},
+{
+"type": "blog",
+"id": "blog_1",
+"label": "t:sections.featured-blog.settings.blog.label"
+},
+{
+"type": "range",
+"id": "post_limit",
+"min": 1,
+"max": 10,
+"step": 1,
+"default": 3,
+"label": "t:sections.featured-blog.settings.post_limit.label"
+},
+{
+"type": "textarea",
+"id": "all_collection_text",
+"label": "Collection Title"
+},
+{
+"type": "collection",
+"id": "all_collection",
+"label": "Select Collection"
+},
+{
+"type": "text",
+"id": "heading_2",
+"label": "Title 2"
+},
+{
+"type": "blog",
+"id": "blog_2",
+"label": "t:sections.featured-blog.settings.blog.label"
+},
+{
+"type": "range",
+"id": "post_limit_1",
+"min": 1,
+"max": 6,
+"step": 1,
+"default": 3,
+"label": "t:sections.featured-blog.settings.post_limit.label"
+}
+],
+"blocks": [
+{
+"type": "title",
+"name": "t:sections.main-blog.blocks.title.name",
+"limit": 1,
+"settings": [
+{
+"type": "checkbox",
+"id": "show_date",
+"default": true,
+"label": "t:sections.main-blog.blocks.title.settings.show_date.label"
+},
+{
+"type": "checkbox",
+"id": "show_author",
+"default": false,
+"label": "t:sections.main-blog.blocks.title.settings.show_author.label"
+}
+]
+},
+{
+"type": "summary",
+"name": "t:sections.main-blog.blocks.summary.name",
+"limit": 1
+},
+{
+"type": "link",
+"name": "t:sections.main-blog.blocks.link.name",
+"limit": 1
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,74 @@
+<!-- Link Swiper's CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+<div class="page-width page_width_0">
+  <div class="full_slider">
+    <!-- Swiper -->
+    <div class="swiper-container mySwiper">
+      <div class="swiper-wrapper">
+        
+        {% for block in section.blocks %}
+        <div class="swiper-slide">
+          <a href="{{ block.settings.url}}">       
+             <img src="{{ block.settings.Image | img_url:'master' }}">
+          </a>
+		  </div>
+        {% endfor %}
+       </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".full_slider .mySwiper", {
+        autoplay: {
+          delay: 5000,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Slider",
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add image",
+      "settings": [
+            {
+      "id": "Image",
+      "type": "image_picker",
+      "label": "Add Image"
+    },
+            {
+      "id": "url",
+      "type": "url",
+      "label": "Add Link"
+    }
+      ]
+    }
+  ],
+"presets" : [
+{
+  "name" : "Slider",
+  "category" : "Main Slider"
+  }
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

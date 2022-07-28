@@ -1,0 +1,380 @@
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+/>
+
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+<link rel="preload" href="{{ 'component-card.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ 'component-price.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ 'component-badge.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-badge.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+.card-information {
+	padding: 0;
+	margin: 5px auto;
+	border: solid #efc95f 10px;
+}
+.selected_featured_product__styling--product-wrapper {
+	background-color: #f6ec6e;
+	box-shadow: 0 0 0 5px #efc95f;
+	border-radius: 10px;
+	padding: 15px 30px;
+	box-sizing: border-box;
+}
+.selected_featured_product-first_white_background {
+	background-color: #fff;
+	margin: auto;
+	border: solid #fff 10px;
+	border-radius: 15px;
+}
+.selected_featured_product-section-title h2 {
+	font-size: 25px;
+	color: #a73598;
+	font-weight: 700;
+	text-align: center;
+}
+.card-information__text {
+	font-size: 20px;
+	color: #a73598;
+	font-weight: 700;
+	letter-spacing: 0.2px;
+	line-height: 1.3;
+}
+.jdgm-preview-badge .jdgm-star.jdgm-star {
+	font-size: 16px;
+	color: #ffc03b;
+}
+.jdgm-widget.jdgm-preview-badge.jdgm-preview-badge--with-link.jdgm--done-setup {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+span.price-item.price-item--regular {
+	background-color: #a73598;
+	color: #fff;
+	padding: 6px 12px 6px 12px;
+	border-radius: 72px;
+	font-size: 17px;
+	box-shadow: 2px 2px 6px 0px #000;
+}
+button.btn_add_to_cart {
+	width: 100%;
+	color: #777154;
+	font-size: 15px;
+	font-weight: 700;
+	padding: 7px;
+	border-radius: 30px;
+	box-shadow: 2px 2px 6px 0px #000;
+	border: 0px;
+	background-image: linear-gradient(#ecff00, #f5cc00);
+} /* age
+design */
+.product--age {
+	color: #a73598;
+	border: 2.5px solid #a73598;
+	border-radius: 25px;
+	padding: 2px 4px 2px 4px;
+	font-size: 16px;
+	font-weight: 600;
+}
+@media screen and (min-width: 900px) {
+	.flex_col_meta {
+		display: flex;
+		display: -webkit-flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 5px 0;
+	}
+}
+.selected_featured_product__styling--product-info {
+	max-width: 275px !important;
+}
+@media screen and (max-width: 899px) {
+	.selected_featured_product__styling--product-image {
+		max-width: 90%;
+	}
+	img.selected_featured_product__styling--product-image {
+		padding-right: 10px !important;
+		padding-left: 10px !important;
+	}
+}
+@media screen and (min-width: 900px) and (max-width: 1299px) {
+	.selected_featured_product__styling--product-image {
+		max-width: 60%;
+	}
+	img.selected_featured_product__styling--product-image {
+		max-width: 54%;
+	}
+}
+@media screen and (min-width: 1300px) {
+	.selected_featured_product__styling--product-image {
+		max-width: 89%;
+	}
+	img.selected_featured_product__styling--product-image {
+		max-width: 49%;
+	}
+}
+.selected_featured_product-inner-wrapper {
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.selected_featured_product__styling--product-description {
+	font-size: 14px;
+	color: #57585b;
+}
+.jdgm-preview-badge[data-template="index"] {
+	display: block !important;
+}
+.selected_featured_product-video {
+	max-width: 600px;
+	padding: 10px;
+}
+
+@media screen and (min-width: 1001px) {
+	.selected_featured_product-video {
+		max-width: 50%;
+		padding: 10px;
+	}
+
+	.selected_featured_product-image,
+	.selected_featured_product__styling--product-info {
+		width: 25%;
+		padding: 10px;
+	}
+  .selected_featured_product-image img {
+		width: 100%;
+		height: auto;
+	}
+} 
+@media screen and (max-width: 1000px) {
+	.selected_featured_product-video {
+		max-width: 90%;
+		padding: 10px;
+		margin: auto;
+	}
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+	.selected_featured_product-image {
+		width: 45%;
+	}
+	.selected_featured_product-image img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+@media screen and (max-width: 599px) {
+	.selected_featured_product-image img {
+		max-width: 275px;
+		margin: auto;
+		height: auto;
+	}
+}
+.selected_featured_product__styling--product-info,
+.selected_featured_product-image {
+	padding: 10px;
+}
+.selected_featured_product-video video {
+	max-width: 100% !important;
+	height: auto !important;
+}
+.swiper-pagination {
+	position: relative;
+	padding-top: 5px;
+	bottom: 0 !important;
+}
+@media screen and (max-width: 500px) {
+	.swiper-button-next,
+	.swiper-button-prev {
+		display: none !important;
+	}
+}
+@media screen and (min-width: 500px) {
+	.swiper-pagination {
+		display: none !important;
+	}
+}
+.swiper-button-next {
+	width: 0 !important;
+	height: 0 !important;
+	border-radius: 0;
+	border-top: 15px solid transparent !important;
+	border-bottom: 15px solid transparent !important;
+	border-left: 25px solid #58585b !important;
+	right: -10px;
+}
+.swiper-button-prev {
+	width: 0 !important;
+	height: 0 !important;
+	border-radius: 0;
+	border-top: 15px solid transparent !important;
+	border-bottom: 15px solid transparent !important;
+	border-right: 25px solid #58585b !important;
+	left: -10px;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+	content: "";
+}
+
+</style>
+
+
+
+
+
+    <div class="card-information selected_featured_product__styling page-width ">
+      <div class="selected_featured_product__styling--main_wrapper">
+      <div class="selected_featured_product__styling--product-wrapper">
+        <div class="selected_featured_product-first_white_background">
+        <div class="selected_featured_product-section-title">
+          <h2 class="card-information__text">Featured Products</h2>
+          </div>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+         {%- for block in section.blocks -%}
+        {% if forloop.length > 1 %}
+        <div class="swiper-slide">
+          {% endif %}
+           <div class="selected_featured_product-inner-wrapper">
+      <div class="selected_featured_product-video">
+      <video autoplay muted width="600" height="auto" loop>
+        <source src="{{ block.settings.selected_featured_product.metafields.custom.featured_video_for_homepage | file_url }}" type="video/mp4">
+        </video>
+      </div>
+      <div class="selected_featured_product-image">
+        <img src="{{ block.settings.selected_featured_product.featured_image | image_url: medium }}" width="480" height="480" />
+      </div>
+      <div class="card-information__wrapper selected_featured_product__styling--product-info ">
+        <div class="selected_featured_product__wrapper">
+          <span class="card-information__text">
+            {{ block.settings.selected_featured_product.title | escape | truncate: 200 }}
+          </span>
+
+        {% comment %}Start automatically added Judge.me widget{% endcomment %}
+        {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: true, product: block.settings.selected_featured_product %}
+        {% comment %}End automatically added Judge.me widget{% endcomment %}
+
+        <div class="flex_col_meta">
+          {% render 'price', product: block.settings.selected_featured_product, price_class: '' %}
+          {% if block.settings.selected_featured_product.metafields.my_fields.age %}
+          <span class="product--age">{{ block.settings.selected_featured_product.metafields.my_fields.age }}</span>
+          {% endif %}
+        </div>
+          {% assign thisProduct = block.settings.selected_featured_product %}
+        {% if block.settings.button_type == 'add_to_cart' %}
+          <product-form class="product-form">
+            {%- form 'product', thisProduct, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input type="hidden" name="id" value="{{ thisProduct.variants.first.id }}">
+            <div class="product-form__buttons">
+              <button
+                      type="submit"
+                      name="add"
+                      class="btn_add_to_cart raise"
+                      {% if block.settings.selected_featured_product.available == false %}disabled{% endif %}
+                      >
+                {%- if block.settings.selected_featured_product.available -%}
+                {{ 'products.product.add_to_cart' | t }}
+                {%- else -%}
+                {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </button>
+            </div>
+            {%- endform -%}
+          </product-form>
+          {% else %}
+
+        <a href="{{ block.settings.selected_featured_product.url }}">
+          <button class="btn_add_to_cart raise">Find out more</button>
+          </a>
+        {% endif %}
+          </div>
+
+      </div>
+       </div>
+                   {% if forloop.length > 1 %}
+        </div>
+          {% endif %}
+           {%- endfor -%}
+        
+      </div>
+<div class="swiper-pagination"></div>
+
+        <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+      
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  var swiper = new Swiper(".card-information .mySwiper", {
+    grabCursor: true,
+    loop: true,
+    autoplay: {delay: 7000 },
+    freeMode: false,
+    speed: 1000,
+	spaceBetween: 0,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+  },
+    slidesPerView: 1
+  });  
+</script>
+{% schema %}
+{
+"name": "Homepage Featured Product",
+ "max_blocks": 5,
+"blocks": [
+{
+"name": "Featured Product",
+"type": "product",
+"settings": [
+{
+"type": "product",
+"id": "selected_featured_product",
+"label": "Main Featured Product"
+},
+{
+"type": "select",
+"id": "button_type",
+"options": [
+{
+"value": "add_to_cart",
+"label": "Add to cart"
+},
+{
+"value": "link_to_product",
+"label": "Find out more - Link to product page"
+}
+],
+"default": "add_to_cart",
+"label": "Button type"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Homepage Featured Products"
+}
+]
+}
+{% endschema %}

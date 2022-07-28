@@ -1,0 +1,298 @@
+<style>
+
+  /*section-ring*/
+  .row.row-3P{
+    display:content !important;
+  } 
+  .ring-row1{
+    margin-top: 60px;
+    color: #cb6b28;
+    text-align: center;
+  }
+  .ring-img{
+    margin-top: 30px;
+    margin-bottom: 30px; 
+  }
+  .col.ring-img.item-center:first-child img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .ring-img img {
+    max-width: 100%;
+    /*     max-width: 200px;
+    max-height: 200px; */
+  }
+  .item-center{
+    text-align: center;
+  }
+  .ring-row-2{
+    margin-top: 30px;
+    margin-bottom: 0px;
+    /*     padding:0px 110px; */
+  }
+  .col.image-feed.right-image2{
+    flex:25%;
+    margin-top: 30px;
+  }
+  .insta-row-2{
+    margin-top: 30px;
+    margin-bottom: 50px;
+    padding:0px 110px;
+    display:flex;
+    flex-wrap:wrap;
+  }
+  .row-3{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ring-row1 h3 {
+    font-size: xx-large;
+    color:#000;
+  }
+  .ring-row-3{
+    margin-top: 50px;
+  }
+  .col.ring-img.item-center {
+    flex: 14.666%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    max-width:14.666%;
+    margin: 0 auto;
+    padding-top:15px;
+  }
+  .row.row-3>.col.ring-img.item-center:first-child {
+    flex: 25%;
+    max-width: 25%;
+  }
+  .row.row-3>.col.ring-img.item-center:last-child {
+    flex: 25%;
+    max-width: 25%;
+  }
+  .our_brand-section .page-width:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: -200px;
+    background: #fff;
+    z-index: -1;
+    left: 0;
+  }
+  /*section-ring end*/
+
+  @media screen and (max-width: 850px) {
+    .ring-row-2{
+      padding:0px;
+      margin:20px;
+    }
+    .ring-row1{
+      margin-top:10px;
+    }
+    .ring-img{
+      margin:0px;
+    }
+/*     .col.ring-img.item-center {
+      flex: 33.33%;
+      max-width:33.33%;
+    } */
+    .ring-img img{
+      width:130px;
+    }
+  }
+  @media screen and (max-width: 426px) {
+    .ring-row-2{
+      padding:0px;    
+    }
+    .ring-img{
+      margin:0px;
+    }
+    .col.ring-img.item-center {
+      flex: 50% !important;
+      max-width:50%;
+    }
+  }
+  @media screen and (max-width: 1025px){
+    .ring-img {
+      padding: 15px;
+    }    
+    .ring-row1{
+      margin-top:0px;
+    }
+    .ring-row-2{
+      margin:10px 0px;
+    }
+  }
+
+  @media screen and (min-width: 1440px){
+    .ring-row-2 {
+      max-width: 1320px;
+      margin: 30px auto;
+    }    
+  }
+
+  @media screen and (max-width: 990px) {
+    .our_brand-section {
+      padding-top: 10px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  /*   my-css */
+  @media screen and (max-width: 600px) {
+    .col.ring-img.item-center:first-child {
+      display: none;
+    }
+    .ring-row-2 {
+      margin: 0;
+    }
+    .col.ring-img.item-center {
+      width: 100%;
+      padding: 8px !important;
+      max-width: 100% !important;
+    }
+    .our_brand-section {
+      padding-top: 0;
+    }
+    .row.row-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      padding: 8px 0 0;
+    }
+    .ring-img img {
+      width: 100% !important;
+      padding: 0 !important;
+    }
+  }
+  /*   .col.ring-img.item-center:first-child {
+  display: none;
+  } */
+  .buttton-containerin-the-news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .in-the-new-btn {
+/*     background: url({{ 'back-news.png' | asset_url }}); */
+    background: url({{ section.settings.intheNews | img_url : 'master' }});
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    background-position: center;
+    padding: 15px 20px;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 2.65rem;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @media screen and (max-width: 600px) {
+    .container-fluid.hero-back-color.page-width {
+      width: 90%;
+    }
+  }
+  @media screen and (min-width: 601px) {
+    .buttton-containerin-the-news {
+      display: none !important;
+    }
+  }
+
+  /*   @media screen and (min-width: 600px) {
+  .in-the-new-btn {
+  display: none;
+  }
+  } */
+</style>
+<div class="our_brand-section" >
+
+  <div class="container-fluid hero-back-color page-width" style="background-color: {{section.settings.bkg-color}}; position:relative;">
+    <!--     <div class="row">
+<div class="ring-row1 float-r-l">
+<h1>{{ section.settings.title | escape }}</h1>
+</div>
+</div>         -->
+    <div class="ring-row-2">
+      <div class="buttton-containerin-the-news">
+        <a class="in-the-new-btn" href="{{ section.settings.btn-in-news-link }}">{{ section.settings.btn-in-news }}</a>
+      </div>
+      <div class="row row-3">
+        {% if section.settings.intheNews !=blank %}
+
+        {% endif %}
+        {% for block in section.blocks %}
+        <div class="col ring-img item-center" >
+          <a href="{{ section.settings.url }}">
+            <img src="{{ block.settings.product-image | img_url: 'master' }}">
+          </a>        
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div>
+{% schema %}
+{
+"name": "In The News",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "text"
+},
+{
+"type"    : "color",
+"id"      : "bkg-color",
+"default" : "#fff",
+"label"   : "Background Color"
+},
+{
+"id"	: "intheNews",
+"type"	: "image_picker",
+"label" : "In News Image"
+},
+{
+"type": "text",
+"id": "btn-in-news",
+"label": "text"
+},
+{
+"type": "url",
+"id": "btn-in-news-link",
+"label": "Url For Button"
+}
+],
+
+"blocks": [
+{
+"type": "select",
+"name": "Add image",
+"settings": [
+{
+"id": "url",
+"type": "url",
+"label": "Brand Link"
+},
+{
+"id": "product-image",
+"type": "image_picker",
+"label": "image picker"
+}
+]
+}
+],
+"presets": [
+{
+"name": "In The News",
+"category": "ring-image"
+}
+]
+}
+{% endschema %}
