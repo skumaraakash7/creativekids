@@ -1,10 +1,4 @@
-{{ 'section-announcement-bar.css' | asset_url | stylesheet_tag }}
-
-<style>
-
-</style>
-
-
+<link rel="stylesheet" data-href="{{ 'section-announcement-bar.css' | asset_url }}">
 {%- for block in section.blocks -%}
   {%- case block.type -%}
     {%- when 'announcement' -%}
@@ -51,11 +45,6 @@
 </div>
   {%- endcase -%}
 {%- endfor -%}
-
-
-
-
-
 {% schema %}
 {
   "name": "t:sections.announcement-bar.name",

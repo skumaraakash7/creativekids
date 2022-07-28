@@ -1,5 +1,5 @@
-{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
-{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" data-href="{{ 'component-newsletter.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'newsletter-section.css' | asset_url }}">
 
 <div class="newsletter center{% if section.settings.full_width == false %} newsletter--narrow page-width{% endif%}">
   <div class="newsletter__wrapper color-{{ section.settings.color_scheme }}">

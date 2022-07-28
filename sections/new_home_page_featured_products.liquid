@@ -1,14 +1,9 @@
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-/>
-
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-
-<link rel="preload" href="{{ 'component-card.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ 'component-price.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ 'component-badge.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" data-href="{{ 'component-card.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-badge.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}">
 
 <noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
@@ -212,6 +207,7 @@ design */
 	border-bottom: 15px solid transparent !important;
 	border-left: 25px solid #58585b !important;
 	right: -10px;
+    background: none;
 }
 .swiper-button-prev {
 	width: 0 !important;
@@ -221,6 +217,7 @@ design */
 	border-bottom: 15px solid transparent !important;
 	border-right: 25px solid #58585b !important;
 	left: -10px;
+    background: none;
 }
 .swiper-button-next::after,
 .swiper-button-prev::after {
@@ -248,12 +245,12 @@ design */
           {% endif %}
            <div class="selected_featured_product-inner-wrapper">
       <div class="selected_featured_product-video">
-      <video autoplay muted width="600" height="auto" loop>
+      <video muted width="600" height="auto" loop preload="none" playsinline>
         <source src="{{ block.settings.selected_featured_product.metafields.custom.featured_video_for_homepage | file_url }}" type="video/mp4">
         </video>
       </div>
       <div class="selected_featured_product-image">
-        <img src="{{ block.settings.selected_featured_product.featured_image | image_url: medium }}" width="480" height="480" />
+        <img class="lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" data-src="{{ block.settings.selected_featured_product.featured_image | image_url: medium }}" width="480" height="480" />
       </div>
       <div class="card-information__wrapper selected_featured_product__styling--product-info ">
         <div class="selected_featured_product__wrapper">

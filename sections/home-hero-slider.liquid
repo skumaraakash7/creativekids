@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <style>
   .home_hero_slider {
     margin-top: -10px;
@@ -190,9 +190,15 @@
             <div class="slide-bg slide-bg2">
                 <a href="{{ block.settings.slid-img-link }}">
                   {% if block.settings.slid-img %}
-                  	<img class="slide-item" src="{{ block.settings.slid-img | img_url : 'master'  }}"             
-                      width="{{ block.settings.slid-img.width }}"
-                      height="{{ block.settings.slid-img.height }}" />
+                    {% if forloop.first %}
+                      	<img class="slide-item lazy2" src="{{ block.settings.slid-img | img_url : '300x'  }}" data-src="{{ block.settings.slid-img | img_url : 'master'  }}" data-mobsrc="{{ block.settings.slid-img | img_url : '480x'  }}"
+                          width="{{ block.settings.slid-img.width }}"
+                          height="{{ block.settings.slid-img.height }}" />
+                    {% else %}
+                      	<img class="slide-item lazy2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" data-src="{{ block.settings.slid-img | img_url : 'master'  }}" data-mobsrc="{{ block.settings.slid-img | img_url : '480x'  }}"
+                          width="{{ block.settings.slid-img.width }}"
+                          height="{{ block.settings.slid-img.height }}" />
+                    {% endif %}
                   {% endif %}
               </a>
             </div>
@@ -211,7 +217,7 @@
           <div class="slide-cont">
             <div class="slide-bg slide-bg2">
               <a href="{{ block.settings.slid-img-html-link }}">              
-                <video autoplay loop muted  width="1920" height="1082" {% comment %}poster="//cdn.shopify.com/s/files/1/0201/3347/8500/t/4/assets/ytthumb.jpg"{% endcomment %}>
+                <video loop muted  width="1920" height="1082" preload="none" playsinline>
                   <source src="{{block.settings.slid-vid-html }}" type="video/mp4" />
                   Sorry, your browser doesn't support embedded videos.                                                                         
                 </video>
@@ -272,7 +278,7 @@
     // 		},
     autoplay: 
     {
-      delay: 3000,
+      delay: 5000,
     },
     loop: true,
   }); 
@@ -299,7 +305,6 @@
     });
   });
 </script>
-
 {% schema %}
 {
 "name": "Home Page Hero Slider",

@@ -1,10 +1,10 @@
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
-{{ 'component-loading-overlay.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" data-href="{{ 'template-collection.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-loading-overlay.css' | asset_url }}">
 
-<link rel="preload" href="{{ 'component-card.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ 'component-price.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ 'component-badge.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<link rel="preload" href="{{ 'component-rte.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="stylesheet" data-href="{{ 'component-card.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-price.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-badge.css' | asset_url }}">
+<link rel="stylesheet" data-href="{{ 'component-rte.css' | asset_url }}">
 
 <noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
